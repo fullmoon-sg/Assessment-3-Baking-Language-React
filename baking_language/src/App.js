@@ -1,12 +1,15 @@
 import React from 'react'
-import {BrowserRouter as Router,Link,Switch,Route} from 'react-router-dom'
+// import {BrowserRouter as Router,Link,Switch,Route} from 'react-router-dom'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import Menu from './components/Menu'
+import Products from './components/Products'
+import { Grid } from "@material-ui/core";
 
 class App extends React.Component{
 
-    state = { 
+     state = { 
         products : []
     }
 
@@ -16,8 +19,21 @@ class App extends React.Component{
             products : response.data
         })
     }
+   
     render(){
-        return <div className="App"></div>      
+        return <div className="App">
+        <Menu />
+         <Grid container direction="column">
+            <Grid item container>
+                <Grid item xs={0} sm={2}/>
+                <Grid item xs={12} sm={8}>
+                    <Products />
+                </Grid>
+                <Grid item xs={0} sm={0}/>
+            </Grid>
+        </Grid>
+  
+        </div>      
     }
 
 }
