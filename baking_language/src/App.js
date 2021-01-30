@@ -6,6 +6,7 @@ import './App.css'
 import Menu from './components/Menu'
 import Products from './components/Products'
 import { Grid } from "@material-ui/core";
+import ProductContext from "./context/ProductContext"
 
 class App extends React.Component{
 
@@ -21,21 +22,21 @@ class App extends React.Component{
     }
    
     render(){
-        return <div className="App">
+        return ( 
+        <ProductContext.Provider value={this.state}>
+        <div className="App">
         <Menu />
          <Grid container direction="column">
             <Grid item container>
                 <Grid item xs={0} sm={2}/>
                 <Grid item xs={12} sm={8}>
-                    <Products />
+                   <Products/>
                 </Grid>
-                <Grid item xs={0} sm={0}/>
+                <Grid item xs={0} sm={2}/>
             </Grid>
         </Grid>
-  
-        </div>      
-    }
-
+        </div>     
+      </ProductContext.Provider> 
+        )}
 }
-
 export default App;
