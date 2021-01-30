@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import ShareIcon from '@material-ui/icons/Share';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import ProductContext from "../../context/ProductContext"
 
 
 const useStyles = makeStyles({
@@ -21,20 +20,19 @@ const useStyles = makeStyles({
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 14,
+    fontSize: 16,
   },
   pos: {
     marginBottom: 12,
   },
 });
 
-export default function Product() {
+export default function Product(props) {
   const classes = useStyles();
- 
-  const context = useContext(ProductContext);
+ const {category, image_url, description, price} = props;
 
   return (
-    context.products.map(p =>(
+    
     <Card>
         <CardHeader
         avatar={
@@ -45,18 +43,18 @@ export default function Product() {
             <ShareIcon />
           </IconButton>
         }
-        category={p.category}
+        title={category}
         
       />
-       <CardMedia style={{height : "200px"}}
-        image={p.image_url}
+       <CardMedia style={{height : "300px"}}
+        image= {image_url}
       />
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {p.description}
+          {description}
         </Typography>
         <Typography variant="h5" component="h2">
-         {p.price/100}
+         {price/100}
         </Typography>
         
       </CardContent>
@@ -65,6 +63,6 @@ export default function Product() {
          <Button size="small">Offer</Button>
       </CardActions>
     </Card>
-    ))
+    
   );
 }
