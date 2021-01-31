@@ -17,12 +17,8 @@ export default function Products(){
     };
    
     return (
-      
        <Grid container spacing = {4}>             
        {context.products.map(productObj => getProductCard(productObj))}
      </Grid>
-     
-    
-  
     )
 }
