@@ -13,13 +13,13 @@ import AboutUs from './components/AboutUs'
 import Feedbacks from './components/Feedbacks'
 import Login from './components/Login'
 import FeedbackContext from "./context/FeedbackContext"
+import SignUp from "./components/SignUp"
 
 class App extends React.Component {
 
-
     state = {
         products: [],
-        feedbacks:[]
+        feedbacks: []
     }
 
     async componentDidMount() {
@@ -30,7 +30,7 @@ class App extends React.Component {
 
         let feedbackResponse = await axios.get('https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/feedbacks-api');
         this.setState({
-            feedbacks : feedbackResponse.data
+            feedbacks: feedbackResponse.data
         })
 
     }
@@ -45,8 +45,8 @@ class App extends React.Component {
                         <Home />
                     </Route>
                     <Route exact path="/gallery">
-                        <Menu/>
-                        <Gallery/>
+                        <Menu />
+                        <Gallery />
                     </Route>
                     <Route exact path="/products">
                         <ProductContext.Provider value={this.state}>
@@ -62,8 +62,8 @@ class App extends React.Component {
                             </Grid>
                         </ProductContext.Provider>
                     </Route>
-                      <Route exact path="/feedbacks">
-                         <FeedbackContext.Provider value={this.state}>
+                    <Route exact path="/feedbacks">
+                        <FeedbackContext.Provider value={this.state}>
                             <Menu />
                             <Grid container direction="column">
                                 <Grid item container>
@@ -82,9 +82,29 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/login">
                         <Menu />
-                        <Login />
+                        <Grid container direction="column">
+                            <Grid item container>
+                                <Grid item xs={0} sm={2} />
+                                <Grid item xs={12} sm={8}>
+                                    <Login />
+                                </Grid>
+                                <Grid item xs={0} sm={2} />
+                            </Grid>
+                        </Grid>
                     </Route>
-                    
+                     <Route exact path="/login/signup">
+                        <Menu />
+                        <Grid container direction="column">
+                            <Grid item container>
+                                <Grid item xs={0} sm={2} />
+                                <Grid item xs={12} sm={8}>
+                                    <SignUp />
+                                </Grid>
+                                <Grid item xs={0} sm={2} />
+                            </Grid>
+                        </Grid>
+                    </Route>
+
                 </Switch>
             </Router>
 

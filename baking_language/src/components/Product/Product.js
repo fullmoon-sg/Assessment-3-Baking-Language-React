@@ -13,11 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 
 
 const useStyles = makeStyles({
-  
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  card: {
+    margin : 50
   },
   title: {
     fontSize: 16,
@@ -33,7 +30,7 @@ export default function Product(props) {
 
   return (
     
-    <Card>
+    <Card className={classes.card}>
         <CardHeader
         avatar={
        <Avatar aria-label="recipe" className={classes.avatar} />    

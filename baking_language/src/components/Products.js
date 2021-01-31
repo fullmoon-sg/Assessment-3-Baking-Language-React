@@ -7,17 +7,17 @@ export default function Products() {
 
     const context = useContext(ProductContext)
 
-    const getProductCard = productObj => {
+    const getProductCard = productParams => {
         return (
-            <Grid item xs={12} sm={3}>
-                <Product {...productObj} />
+            <Grid item xs={12} sm={4}>
+                <Product {...productParams} />
             </Grid>
         );
     };
 
     return (
         <Grid container spacing={4}>
-            {context.products.map(productObj => getProductCard(productObj))}
+            {context.products.map(productParams => getProductCard(productParams))}
         </Grid>
     );
 }
