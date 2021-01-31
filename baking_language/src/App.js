@@ -10,14 +10,16 @@ import ProductContext from "./context/ProductContext"
 import Home from './components/Home'
 import Gallery from './components/Gallery'
 import AboutUs from './components/AboutUs'
-import Feedback from './components/Feedback'
+import Feedbacks from './components/Feedbacks'
 import Login from './components/Login'
+import FeedbackContext from "./context/FeedbackContext"
 
 class App extends React.Component {
 
 
     state = {
-        products: []
+        products: [],
+        feedbacks:[]
     }
 
     async componentDidMount() {
@@ -30,7 +32,6 @@ class App extends React.Component {
         this.setState({
             feedbacks : feedbackResponse.data
         })
-
 
     }
 
@@ -62,8 +63,18 @@ class App extends React.Component {
                         </ProductContext.Provider>
                     </Route>
                       <Route exact path="/feedbacks">
-                        <Menu />
-                        <Feedback />
+                         <FeedbackContext.Provider value={this.state}>
+                            <Menu />
+                            <Grid container direction="column">
+                                <Grid item container>
+                                    <Grid item xs={0} sm={2} />
+                                    <Grid item xs={12} sm={8}>
+                                        <Feedbacks />
+                                    </Grid>
+                                    <Grid item xs={0} sm={2} />
+                                </Grid>
+                            </Grid>
+                        </FeedbackContext.Provider>
                     </Route>
                     <Route exact path="/aboutus">
                         <Menu />
