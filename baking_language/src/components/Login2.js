@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Grid, Paper, TextField, Typography, Link } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,14 @@ import Button from '@material-ui/core/Button';
 import SignUp from './SignUp';
 
 
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//       width: '25ch',
+//     },
+//   },
+// }));
 
 
 const formStyle = {
@@ -25,31 +33,32 @@ const buttonStyle = {
     margin : '10px 0'
 }
 
-export default class Login extends React.Component {
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     display: 'flex',
+//     '& > *': {
+//       margin: theme.spacing(1),
+//     },
+//   },
+//   large: {
+//     width: theme.spacing(7),
+//     height: theme.spacing(7),
+//   },
+// }))
 
-   state ={
-       username : "",
-       password :"",
-   }
-    
-    updateFormField = (event) => {
-        this.setState({
-            [event.target.name] : event.target.value
-        })
-    }
-    
-    render(){
+export default function Login() {
+
+    // const classes = useStyles();
 
     return (
-       
         <Grid item xs={12}>
             <Paper elevation={8} style={formStyle}>
                 <Grid align='center'>
                     <Avatar style={avatarStyle}><LockIcon /></Avatar>
                     <h2>Sign in</h2>
                 </Grid>
-                <TextField label="Username" name="username" value={this.state.username} variant="standard" placeholder="Enter username" fullWidth required onChange={this.updateFormField}/>
-                <TextField label="Password" name="password" value={this.state.password} variant="standard" type="password" placeholder="Enter username" fullWidth required onChange={this.updateFormField}/>
+                <TextField label="Username" variant="standard" placeholder="Enter username" fullWidth required />
+                <TextField label="Password" variant="standard" type="password" placeholder="Enter username" fullWidth required />
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -73,8 +82,4 @@ export default class Login extends React.Component {
             </Paper>
         </Grid>
     )
-
-   
-    }//end of render
-   
 }
