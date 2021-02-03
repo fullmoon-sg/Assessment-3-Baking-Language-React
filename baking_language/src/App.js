@@ -21,6 +21,7 @@ class App extends React.Component {
     state = {
         products: [],
         feedbacks: [],
+        cartItems: []
     }
 
     async componentDidMount() {
@@ -33,107 +34,108 @@ class App extends React.Component {
         this.setState({
             feedbacks: feedbackResponse.data
         })
-
     }
 
-    addToCart(){
-        console.log("ABC")
+    addToCart = (product) => {
+        this.setState({
+            cartItems: [...this.state.cartItems, product]
+        })
     }
 
     render() {
         return (
-  
-     <ProductContext.Provider value={{...this.state,addToCart:this.addToCart}}>
-            <Router>
-                <Switch>
-                    <Route exact path="/">
-                        <Menu />
-                        <Home />
-                    </Route>
-                    <Route exact path="/gallery">
-                        <Menu />
-                        <Gallery />
-                    </Route>
-                    <Route exact path="/products">
-                       
+
+            <ProductContext.Provider value={{ ...this.state, addToCart: this.addToCart }}>
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
+                            <Menu />
+                            <Home />
+                        </Route>
+                        <Route exact path="/gallery">
+                            <Menu />
+                            <Gallery />
+                        </Route>
+                        <Route exact path="/products">
+
                             <Menu />
                             <Grid container direction="column">
                                 <Grid item container>
                                     <Grid item xs={0} sm={2} />
                                     <Grid item xs={12} sm={8}>
-                                        <Products />
+                                        <Products addToCart={this.addToCart}/>
                                     </Grid>
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
                             </Grid>
-                    
-                    </Route>
-                    <Route exact path="/feedbacks">
-                      <FeedbackContext.Provider value={this.state}>
+
+                        </Route>
+                        <Route exact path="/feedbacks">
+                            <FeedbackContext.Provider value={this.state}>
+                                <Menu />
+                                <Grid container direction="column">
+                                    <Grid item container>
+                                        <Grid item xs={0} sm={2} />
+                                        <Grid item xs={12} sm={8}>
+                                            <Feedbacks />
+                                        </Grid>
+                                        <Grid item xs={0} sm={2} />
+                                    </Grid>
+                                </Grid>
+                            </FeedbackContext.Provider>
+                        </Route>
+                        <Route exact path="/aboutus">
+                            <Menu />
+                            <AboutUs />
+                        </Route>
+                        <Route exact path="/login">
                             <Menu />
                             <Grid container direction="column">
                                 <Grid item container>
                                     <Grid item xs={0} sm={2} />
                                     <Grid item xs={12} sm={8}>
-                                        <Feedbacks />
+                                        <Login />
                                     </Grid>
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
                             </Grid>
-                        </FeedbackContext.Provider>
-                    </Route>
-                    <Route exact path="/aboutus">
-                        <Menu />
-                        <AboutUs />
-                    </Route>
-                    <Route exact path="/login">
-                        <Menu />
-                        <Grid container direction="column">
-                            <Grid item container>
-                                <Grid item xs={0} sm={2} />
-                                <Grid item xs={12} sm={8}>
-                                    <Login />
+                        </Route>
+                        <Route exact path="/login/signup">
+                            <Menu />
+                            <Grid container direction="column">
+                                <Grid item container>
+                                    <Grid item xs={0} sm={2} />
+                                    <Grid item xs={12} sm={8}>
+                                        <SignUp />
+                                    </Grid>
+                                    <Grid item xs={0} sm={2} />
                                 </Grid>
-                                <Grid item xs={0} sm={2} />
                             </Grid>
-                        </Grid>
-                    </Route>
-                     <Route exact path="/login/signup">
-                        <Menu />
-                        <Grid container direction="column">
-                            <Grid item container>
-                                <Grid item xs={0} sm={2} />
-                                <Grid item xs={12} sm={8}>
-                                    <SignUp />
+                        </Route>
+                        <Route exact path="/cart">
+                            <Menu />
+                            <Grid container direction="column">
+                                <Grid item container>
+                                    <Grid item xs={0} sm={2} />
+                                    <Grid item xs={12} sm={8}>
+                                        <Cart category={this.category} />
+                                    </Grid>
+                                    <Grid item xs={0} sm={2} />
                                 </Grid>
-                                <Grid item xs={0} sm={2} />
                             </Grid>
-                        </Grid>
-                    </Route>
-                    <Route exact path="/cart">
-                        <Menu />
-                        <Grid container direction="column">
-                            <Grid item container>
-                                <Grid item xs={0} sm={2} />
-                                <Grid item xs={12} sm={8}>
-                                    <Cart />
-                                </Grid>
-                                <Grid item xs={0} sm={2} />
-                            </Grid>
-                        </Grid>
-                    </Route>
+                        </Route>
 
-                </Switch>
-            </Router>
-  
+                    </Switch>
+                </Router>
 
-</ProductContext.Provider>
+
+            </ProductContext.Provider>
         )
 
 
-     
+
     }
-      
+
 }
 export default App;
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -28,9 +28,6 @@ export default function Product(props) {
   const classes = useStyles();
   const {category, image_url, description, price, addToCart} = props;
   
-  
-  console.log(addToCart)
-  
   return (
     
     <Card className={classes.card}>
@@ -58,7 +55,14 @@ export default function Product(props) {
         
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={addToCart}>Buy Now</Button>
+        <Button size="small" onClick={()=>{
+            addToCart({
+                category : category,
+                description : description,
+                image : image_url,
+                price : price
+            })
+        }}>Buy Now</Button>
          <Button size="small">Offer</Button>
       </CardActions>
     </Card>

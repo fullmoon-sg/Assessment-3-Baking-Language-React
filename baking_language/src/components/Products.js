@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import Product from './Product/Product';
 import ProductContext from "../context/ProductContext"
 
-export default function Products() {
+export default function Products(props) {
 
     const context = useContext(ProductContext);
    
@@ -12,6 +12,7 @@ export default function Products() {
         return (
             <Grid item xs={12} sm={4}>
                 <Product {...productParams}
+               
                 />
             </Grid>
         );
