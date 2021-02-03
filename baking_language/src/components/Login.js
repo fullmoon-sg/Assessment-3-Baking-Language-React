@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Grid, Paper, TextField, Typography, Link } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -7,10 +7,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
-import SignUp from './SignUp';
+import axios from 'axios';
 
 
-
+const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
 
 const formStyle = {
     padding: 20,
@@ -37,6 +37,20 @@ export default class Login extends React.Component {
             [event.target.name] : event.target.value
         })
     }
+
+    signIn = async () => {
+
+        let loginData = { 
+            username : this.state.username, 
+            password : this.state.password
+        }
+
+        await axios.post(`${base_url}api/user/login`,loginData)
+        this.setState({
+            username : '',
+            password : ''
+        })
+    }
     
     render(){
 
@@ -53,13 +67,13 @@ export default class Login extends React.Component {
                 <FormControlLabel
                     control={
                         <Checkbox
-                            name="checkedB"
+                            name="checkedBox"
                             color="primary"
                         />
                     }
                     label="Remember Me"
                 />
-                <Button type="submit" color="primary" variant="contained" style={buttonStyle} fullWidth>SIGN IN</Button>
+                <Button type="submit" color="primary" variant="contained" style={buttonStyle} fullWidth onClick={this.signIn}>SIGN IN</Button>
                   <Typography>
                     <Link href="#">
                         Forgot Password ?

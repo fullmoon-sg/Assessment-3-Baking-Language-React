@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
@@ -14,12 +14,13 @@ import Feedbacks from './components/Feedbacks'
 import Login from './components/Login'
 import FeedbackContext from "./context/FeedbackContext"
 import SignUp from "./components/SignUp"
+import Cart from "./components/Cart"
 
 class App extends React.Component {
 
     state = {
         products: [],
-        feedbacks: []
+        feedbacks: [],
     }
 
     async componentDidMount() {
@@ -35,9 +36,14 @@ class App extends React.Component {
 
     }
 
+    addToCart(){
+        console.log("ABC")
+    }
+
     render() {
         return (
-
+  
+     <ProductContext.Provider value={{...this.state,addToCart:this.addToCart}}>
             <Router>
                 <Switch>
                     <Route exact path="/">
@@ -49,7 +55,7 @@ class App extends React.Component {
                         <Gallery />
                     </Route>
                     <Route exact path="/products">
-                        <ProductContext.Provider value={this.state}>
+                       
                             <Menu />
                             <Grid container direction="column">
                                 <Grid item container>
@@ -60,10 +66,10 @@ class App extends React.Component {
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
                             </Grid>
-                        </ProductContext.Provider>
+                    
                     </Route>
                     <Route exact path="/feedbacks">
-                        <FeedbackContext.Provider value={this.state}>
+                      <FeedbackContext.Provider value={this.state}>
                             <Menu />
                             <Grid container direction="column">
                                 <Grid item container>
@@ -104,32 +110,30 @@ class App extends React.Component {
                             </Grid>
                         </Grid>
                     </Route>
+                    <Route exact path="/cart">
+                        <Menu />
+                        <Grid container direction="column">
+                            <Grid item container>
+                                <Grid item xs={0} sm={2} />
+                                <Grid item xs={12} sm={8}>
+                                    <Cart />
+                                </Grid>
+                                <Grid item xs={0} sm={2} />
+                            </Grid>
+                        </Grid>
+                    </Route>
 
                 </Switch>
             </Router>
+  
 
-
+</ProductContext.Provider>
         )
 
 
-
-        //     ( 
-
-        //     <ProductContext.Provider value={this.state}>
-        //     <div className="App">
-        //     <Menu />
-        //      <Grid container direction="column">
-        //         <Grid item container>
-        //             <Grid item xs={0} sm={2}/>
-        //             <Grid item xs={12} sm={8}>
-        //                <Products/>
-        //             </Grid>
-        //             <Grid item xs={0} sm={2}/>
-        //         </Grid>
-        //     </Grid>
-        //     </div>     
-        //   </ProductContext.Provider> 
+     
     }
+      
 }
 export default App;
 

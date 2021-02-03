@@ -26,11 +26,14 @@ const useStyles = makeStyles({
 
 export default function Product(props) {
   const classes = useStyles();
-  const {category, image_url, description, price, addToCart} = props;
-  
-  
-  console.log(addToCart)
-  
+  const {category, image_url, description, price} = props;
+  const[cart,setCart] = useState(0)
+
+  const addToCart = () => {
+      console.log("Button Clicked")
+      console.log(description,price)
+  }
+
   return (
     
     <Card className={classes.card}>
@@ -44,6 +47,7 @@ export default function Product(props) {
           </IconButton>
         }
         title={category}
+        
       />
        <CardMedia style={{height : "300px"}}
         image= {image_url}
