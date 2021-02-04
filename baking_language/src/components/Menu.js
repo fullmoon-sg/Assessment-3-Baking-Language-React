@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{ background: "brown" }}>
+            <AppBar position="static" style={{ background: "pink" }}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <Link label="Home" color="inherit" component={()=><ReactRouterLink to="/">Home</ReactRouterLink>}/>

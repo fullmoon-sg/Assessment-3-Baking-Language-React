@@ -48,15 +48,23 @@ import Button from '@material-ui/core/Button';
 export default function Cart(props) {
 
 // const classes = useStyles();
-const {category,description,price} = props
+// const {category,description,price} = 
+// props.cartItems.length == 0? props.cartItems[0] : { category:"", description:"", price:0 }
 
-console.log(category,description,price)
+let added = [];
+for (let p of props.cartItems) {
+    added.push(<li> {p.category}</li>)
+}
+
+ 
+// console.log(props.cartItems[0].price)
 
 return(
 <React.Fragment>
-    <h1> Hello World</h1>
-    {category}
-    {price}
+    {/* <h1> Hello World {category} {price} Done</h1> */}
+    
+    {added}
+   
 </React.Fragment>
 )
 
