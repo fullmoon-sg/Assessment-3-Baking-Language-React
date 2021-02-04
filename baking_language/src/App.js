@@ -45,7 +45,7 @@ class App extends React.Component {
     render() {
         return (
 
-            <ProductContext.Provider value={{ ...this.state, addToCart: this.addToCart }}>
+           
                 <Router>
                     <Switch>
                         <Route exact path="/">
@@ -63,7 +63,9 @@ class App extends React.Component {
                                 <Grid item container>
                                     <Grid item xs={0} sm={2} />
                                     <Grid item xs={12} sm={8}>
+                                         <ProductContext.Provider value={this.state}>   
                                         <Products addToCart={this.addToCart}/>
+                                        </ProductContext.Provider>
                                     </Grid>
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
@@ -118,7 +120,7 @@ class App extends React.Component {
                                 <Grid item container>
                                     <Grid item xs={0} sm={2} />
                                     <Grid item xs={12} sm={8}>
-                                        <Cart category={this.category} />
+                                        <Cart cartItems={this.state.cartItems} />
                                     </Grid>
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
@@ -129,7 +131,7 @@ class App extends React.Component {
                 </Router>
 
 
-            </ProductContext.Provider>
+          
         )
 
 

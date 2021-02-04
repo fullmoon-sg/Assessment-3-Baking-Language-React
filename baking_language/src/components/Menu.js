@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link'
+import { Link  as ReactRouterLink} from "react-router-dom";
 
 
 
@@ -29,13 +30,13 @@ export default function ButtonAppBar() {
             <AppBar position="static" style={{ background: "brown" }}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        <Link href="/" color="inherit">Home</Link>
+                        <Link label="Home" color="inherit" component={()=><ReactRouterLink to="/">Home</ReactRouterLink>}/>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
                         <Link href="/gallery" color="inherit">Gallery</Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
-                        <Link href="/products" color="inherit">Online Menu</Link>
+                        <Link href="/products" color="inherit" component={()=><ReactRouterLink to="/products">Online Menu</ReactRouterLink>}>Online Menu</Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
                         <Link href="/feedbacks" color="inherit">Remarks by Friends</Link>
@@ -47,7 +48,7 @@ export default function ButtonAppBar() {
                         <Link href="/login" color="inherit">Login</Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
-                        <Link href="/cart" color="inherit">Cart</Link>
+                        <Link href="/cart" color="inherit" component={()=><ReactRouterLink to="/cart">Cart</ReactRouterLink>}>Cart</Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
