@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 // import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,6 +15,8 @@ import Login from './components/Login'
 import FeedbackContext from "./context/FeedbackContext"
 import SignUp from "./components/SignUp"
 import Cart from "./components/Cart"
+import "./App.css"
+
 
 class App extends React.Component {
 
@@ -44,13 +46,20 @@ class App extends React.Component {
 
     render() {
         return (
-
-           
                 <Router>
                     <Switch>
                         <Route exact path="/">
                             <Menu />
-                            <Home />
+                               <Grid container direction="column">
+                                <Grid item container>
+                                    <Grid item xs={0} sm={2} />
+                                    <Grid item xs={12} sm={8}>  
+                                        <Home/>
+                                    </Grid>
+                                    <Grid item xs={0} sm={2} />
+                                </Grid>
+                            </Grid>
+                           
                         </Route>
                         <Route exact path="/gallery">
                             <Menu />
@@ -120,13 +129,13 @@ class App extends React.Component {
                                 <Grid item container>
                                     <Grid item xs={0} sm={2} />
                                     <Grid item xs={12} sm={8}>
-                                        <Cart cartItems={this.state.cartItems} />
+                                        {this.state.cartItems.length  > 0 ?
+                                        <Cart cartItems={this.state.cartItems}/> : console.log("No product in cart")}
                                     </Grid>
                                     <Grid item xs={0} sm={2} />
                                 </Grid>
                             </Grid>
                         </Route>
-
                     </Switch>
                 </Router>
 

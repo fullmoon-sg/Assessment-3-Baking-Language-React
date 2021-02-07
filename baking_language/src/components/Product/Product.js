@@ -57,10 +57,12 @@ export default function Product(props) {
       <CardActions>
         <Button size="small" onClick={()=>{
             addToCart({
+                id : props.id,
                 category : category,
                 description : description,
-                image : image_url,
-                price : price
+                quantity : 1,
+                price : price,
+                total : 0
             })
         }}>Buy Now</Button>
          <Button size="small">Offer</Button>

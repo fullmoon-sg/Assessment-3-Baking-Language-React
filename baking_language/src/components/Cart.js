@@ -1,4 +1,5 @@
-import React  from 'react';
+
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,114 +8,53 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 
-// const GST = 0.07;
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
+    },
+});
 
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 700,
-//   },
-// });
 
-// function ccyFormat(num) {
-//   return `${num.toFixed(2)}`;
-// }
+export default function BasicTable(props) {
+    const classes = useStyles();
 
-// function priceRow(qty, unit) {
-//   return qty * unit;
-// }
+    let item = props.cartItems.map(item => (
+        <div key={item.id}>
+            <TableContainer component={Paper}>
+                <Table aria-label="simple table">
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align="left">{item.category}</TableCell>
+                            <TableCell align="left">{item.description}</TableCell>
+                            <TableCell align="left">{item.price}</TableCell>
+                            <TableCell align="left">{item.quantity}</TableCell>
 
-// function createRow(desc, qty, unit) {
-//   const price = priceRow(qty, unit);
-//   return { desc, qty, unit, price };
-// }
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
+    ))
 
-// function subtotal(items) {
-//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-// }
+    return (
+        <React.Fragment>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="left">Category</TableCell>
+                            <TableCell align="left">Description</TableCell>
+                            <TableCell align="left">Price</TableCell>
+                            <TableCell align="left">Quantity</TableCell>
 
-// const rows = [
-//   createRow('Paperclips (Box)', 100, 1.15),
-//   createRow('Paper (Case)', 10, 45.99),
-//   createRow('Waste Basket', 2, 17.99),
-// ];
-
-// const invoiceSubtotal = subtotal(rows);
-// const invoiceGST = GST * invoiceSubtotal;
-
-// const invoiceTotal = invoiceGST + invoiceSubtotal;
-
-export default function Cart(props) {
-
-// const classes = useStyles();
-// const {category,description,price} = 
-// props.cartItems.length == 0? props.cartItems[0] : { category:"", description:"", price:0 }
-
-let added = [];
-for (let p of props.cartItems) {
-    added.push(<li> {p.category}</li>)
+                        </TableRow>
+                    </TableHead>
+                </Table>
+            </TableContainer>
+            {item}
+        </React.Fragment>
+    )
 }
 
- 
-// console.log(props.cartItems[0].price)
-
-return(
-<React.Fragment>
-    {/* <h1> Hello World {category} {price} Done</h1> */}
-    
-    {added}
-   
-</React.Fragment>
-)
-
-//   return (
-//     <TableContainer component={Paper}>
-//       <Table className={classes.table} aria-label="spanning table">
-//         <TableHead>
-//           <TableRow>
-//             <TableCell align="center" colSpan={3}>
-//               Details
-//             </TableCell>
-//             <TableCell align="right">Price</TableCell>
-//           </TableRow>
-//           <TableRow>
-//             <TableCell>Desc</TableCell>
-//             <TableCell align="right">Qty.</TableCell>
-//             <TableCell align="right">Price </TableCell>
-//             <TableCell align="right">Sum</TableCell>
-//             <TableCell align="right">Action</TableCell>
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-         
-//           {rows.map((row) => (
-//             <TableRow key={row.desc}>
-//               <TableCell>{row.desc}</TableCell>
-//               <TableCell align="right">{row.qty}</TableCell>
-//               <TableCell align="right">{row.unit}</TableCell>
-//               <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-//                <Button size="small" align="right">Remove</Button>
-//             </TableRow>
-//           ))}
-
-//           <TableRow>
-//             <TableCell rowSpan={3} />
-//             <TableCell colSpan={2}>Subtotal</TableCell>
-//             <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-//           </TableRow>
-//           <TableRow>
-//             <TableCell>GST</TableCell>
-//             <TableCell align="right">{`${(GST * 100).toFixed(0)} %`}</TableCell>
-//             <TableCell align="right">{ccyFormat(invoiceGST)}</TableCell>
-//           </TableRow>
-//           <TableRow>
-//             <TableCell colSpan={2}>Total</TableCell>
-//             <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-//           </TableRow>
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-}
 

@@ -49,8 +49,16 @@ export default class Login extends React.Component {
         this.setState({
             username : '',
             password : ''
-        })
+        }).then((response) => {
+            response.json().then((result) => {
+                console.warn("result",result);
+                localStorage.setItem('login', JSON.stringify({login: true,token:result.token}))     
+                                             }
+                                )
+                            }
+            )
     }
+    
     
     render(){
 
@@ -59,7 +67,7 @@ export default class Login extends React.Component {
         <Grid item xs={12}>
             <Paper elevation={8} style={formStyle}>
                 <Grid align='center'>
-                    <Avatar style={avatarStyle}><LockIcon /></Avatar>
+                    <Avatar style={avatarStyle}><LockIcon style={{ fontSize: 30 }}/></Avatar>
                     <h2>Sign in</h2>
                 </Grid>
                 <TextField label="Username" name="username" value={this.state.username} variant="standard" placeholder="Enter username" fullWidth required onChange={this.updateFormField}/>

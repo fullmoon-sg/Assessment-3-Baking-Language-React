@@ -7,12 +7,10 @@ import Link from '@material-ui/core/Link'
 import { Link  as ReactRouterLink} from "react-router-dom";
 
 
-
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        marginTop : 20
     },
     menuButton: {
         marginRight: theme.spacing(1),
@@ -39,7 +37,7 @@ export default function ButtonAppBar() {
                         <Link href="/products" color="inherit" component={()=><ReactRouterLink to="/products">Online Menu</ReactRouterLink>}>Online Menu</Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
-                        <Link href="/feedbacks" color="inherit">Remarks by Friends</Link>
+                      <Link href="/feedbacks" color="inherit">Feedbacks</Link>
                     </Typography>
                     <Typography variant="h6" className={classes.title}>
                         <Link href="/aboutus" color="inherit">About Us</Link>
