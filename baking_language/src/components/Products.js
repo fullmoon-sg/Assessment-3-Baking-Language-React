@@ -7,10 +7,10 @@ export default function Products(props) {
 
  const context = useContext(ProductContext);
 
-    const getProductCard = (productParams) => {
+    const getProductCard = (productParams,id) => {
         return (
             <Grid item xs={12} sm={4}>
-                <Product {...productParams}    
+                <Product {...productParams} key={id}
                 />
             </Grid>
         );
@@ -18,7 +18,7 @@ export default function Products(props) {
 
     return (
         <Grid container spacing={4}>
-            {context.products.map(productParams => getProductCard({...productParams, addToCart:props.addToCart}))}
+            {context.products.map((productParams) => getProductCard({...productParams, addToCart:props.addToCart}))}
         </Grid>
     );
 }

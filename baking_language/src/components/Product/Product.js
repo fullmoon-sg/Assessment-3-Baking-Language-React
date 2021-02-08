@@ -26,11 +26,11 @@ const useStyles = makeStyles({
 
 export default function Product(props) {
   const classes = useStyles();
-  const {category, image_url, description, price, addToCart} = props;
+  const {id,category, image_url, description, price, addToCart} = props;
   
   return (
     
-    <Card className={classes.card}>
+    <Card className={classes.card} key={id}>
         <CardHeader
         avatar={
        <Avatar aria-label="recipe" className={classes.avatar} />    
@@ -62,7 +62,6 @@ export default function Product(props) {
                 description : description,
                 quantity : 1,
                 price : price,
-                total : 0
             })
         }}>Buy Now</Button>
          <Button size="small">Offer</Button>
