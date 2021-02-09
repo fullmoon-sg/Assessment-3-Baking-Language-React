@@ -55,7 +55,7 @@ class App extends React.Component {
 
     render() {
 
-        const { toggle } = this.state
+        const { toggle } = this.state;
 
         return (
             <div className="app">

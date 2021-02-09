@@ -1,6 +1,5 @@
 .main-footer{
     margin-top : 1rem;
-  
     color: white;
     background-color: pink;
     position : fixed;
@@ -19,3 +18,22 @@ hr{
     margin: 2px;
     padding : 2px;
 }
+
+@media (max-width: 877px){
+    .main-footer{
+    margin-top : 0.5rem;
+    color: white;
+    background-color: pink;
+    position : fixed;
+    left: 0;
+    padding-top : 1em;
+    position : relative;
+    bottom : 0;
+    width : 100%
+
+    };
+    p{
+        text-align: center !important;
+    }
+}
+
