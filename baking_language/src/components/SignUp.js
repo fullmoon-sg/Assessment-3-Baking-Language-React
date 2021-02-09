@@ -4,18 +4,19 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
+import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 
+
 const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
 
 const formStyle = {
     padding: "40px 20px",
-    height: "600px",
+    height: "650px",
     width: 500,
     margin: "20px auto"
 }
@@ -38,7 +39,7 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
     firstname: Yup.string().required("Required"),
     lastname: Yup.string().required("Required"),
-    gender:Yup.string().oneOf(["Male","Female"],"Required").required("Required"),
+    gender: Yup.string().oneOf(["Male", "Female"], "Required").required("Required"),
     email: Yup.string().email("Enter a valid email").required("Required"),
     mobile_number: Yup.number().typeError("Enter a valid mobile number").required("Required"),
     address: Yup.string().required("Required"),
@@ -47,16 +48,21 @@ const validationSchema = Yup.object().shape({
 })
 
 export default class SignUp extends React.Component {
-    
-    state = {
-        firstname: '',
-        lastname: '',
-        gender: '',
-        email: '',
-        mobile_number: '',
-        address: '',
-        username: '',
-        password: '',
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstname: '',
+            lastname: '',
+            gender: '',
+            email: '',
+            mobile_number: '',
+            address: '',
+            username: '',
+            password: '',
+            redirect: false,
+        
+        }
     }
 
     updateFormField = (event) => {
@@ -86,12 +92,27 @@ export default class SignUp extends React.Component {
             address: '',
             username: '',
             password: '',
+            redirect: true
+        })
+
+    }
+
+    snackbarClose = () => {
+        this.state({
+            snackbaropen: false
         })
     }
 
 
-
     render() {
+
+        if (this.state.redirect) {
+           alert("Sign=in successfully. Proceed to log in now.")
+            
+            return (<Redirect to={'/login'} />)
+        }
+
+
 
         return (
             <Grid>
@@ -103,10 +124,10 @@ export default class SignUp extends React.Component {
                     <Formik initialValues={initialValues} validationSchema={validationSchema}>
                         {(props) => (
                             <Form>
-                                <Field as={TextField} label="First Name" name="firstname" value={this.state.firstname} variant="standard" placeholder="Enter First Name" error={props.errors.firstname&&props.touched.firstname} helperText={<ErrorMessage name="firstname" />} fullWidth required onChange={this.updateFormField} />
+                                <Field as={TextField} label="First Name" name="firstname" value={this.state.firstname} variant="standard" placeholder="Enter First Name" error={props.errors.firstname && props.touched.firstname} helperText={<ErrorMessage name="firstname" />} fullWidth required onChange={this.updateFormField} />
                                 <Field as={TextField} label="Last Name" name="lastname" value={this.state.lastname} variant="standard" placeholder="Enter Last Name" error={props.errors.lastname && props.touched.lastname} helperText={<ErrorMessage name="lasttname" />} fullWidth required onChange={this.updateFormField} />
 
-                                <FormControl variant="standard" style={{margin : "theme.spacing(1) minWidth: 200"}} >
+                                <FormControl variant="standard" style={{ margin: "theme.spacing(1) minWidth: 200" }} >
                                     <InputLabel shrink>Gender</InputLabel>
                                     <Select
                                         value={this.state.gender}

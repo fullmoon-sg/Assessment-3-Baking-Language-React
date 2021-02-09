@@ -1,0 +1,21 @@
+.main-footer{
+    margin-top : 1rem;
+  
+    color: white;
+    background-color: pink;
+    position : fixed;
+    left: 0;
+    padding-top : 1em;
+    position : relative;
+    bottom : 0;
+    width : 100%
+}
+
+li{
+    list-style : none;
+}
+
+hr{
+    margin: 2px;
+    padding : 2px;
+}

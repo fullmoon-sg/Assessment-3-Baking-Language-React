@@ -80,6 +80,7 @@ export default class Login extends React.Component {
     render() {
 
         if(this.state.redirect){
+            alert("Successfully Sign-In")
             return (<Redirect to={'/'}/>)
         }
 
@@ -95,7 +96,7 @@ export default class Login extends React.Component {
                         <Avatar style={avatarStyle}><LockIcon style={{ fontSize: 30 }} /></Avatar>
                         <h2>Sign in</h2>
                     </Grid>
-                    <TextField label="Username" name="username" value={this.state.username} variant="standard" placeholder="Enter username" fullWidth required onChange={this.updateFormField} />
+                    <TextField label="Username" name="username" value={this.state.username} variant="standard" placeholder="Enter Email" fullWidth required onChange={this.updateFormField} />
                     <TextField label="Password" name="password" value={this.state.password} variant="standard" type="password" placeholder="Enter username" fullWidth required onChange={this.updateFormField} />
                     <FormControlLabel
                         control={
