@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom'
+import HomeCarousel from './HomeCarousel'
 
 class Home extends React.Component {
 
@@ -42,7 +43,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <h1>Hello World</h1>
+                   <HomeCarousel />
                     <button onClick={this.logout}>Log Out</button>
                 </div>
 

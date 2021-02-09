@@ -20,7 +20,7 @@ export default function Footer() {
                     </div>
                     <div className="col" style={{float:'center'}}>
                         <h4>Follow Us</h4> 
-                        <FacebookIcon m={1}/>
+                        <FacebookIcon />
                         <InstagramIcon />
                         <EmailIcon/>
                     </div>
