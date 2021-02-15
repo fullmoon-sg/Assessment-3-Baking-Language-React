@@ -11,7 +11,7 @@ import axios from 'axios';
 import {Redirect} from 'react-router-dom'
 
 
-const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
+// const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
 
 const formStyle = {
     padding: 20,
@@ -37,13 +37,7 @@ export default class Login extends React.Component {
             }
         this.signIn.bind(this)
         this.updateFormField = this.updateFormField.bind(this)
-    }
-
-
-    //     state ={
-    //        username : "",
-    //        password :"",
-    //    }
+    } 
 
     updateFormField = (event) => {
         this.setState({
@@ -58,7 +52,7 @@ export default class Login extends React.Component {
             password: this.state.password
         }
         if (this.state.username && this.state.password){
-             await axios.post(`${base_url}api/user/login`, loginData).then(res => {
+             await axios.post(`api/user/login`, loginData).then(res => {
             const token = res.data.token; 
             localStorage.setItem('adonisToken', token);
             sessionStorage.setItem('userData',loginData)

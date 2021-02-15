@@ -9,13 +9,13 @@ export default function Cart(props) {
     console.log(props.cartItems)
     let item = props.cartItems.map(item => (
         <div key={item.id}>
-                
+            <tr>   
                     <td>{item.category}</td>
                     <td>{item.description}</td>
                     <td>{item.quantity}</td>
                     <td>${item.price / 100}</td>
                     <button> Remove from Cart</button>
-                
+             </tr>   
         </div>
     ))
 
@@ -25,7 +25,7 @@ export default function Cart(props) {
                 <thead> 
                     <tr>
                         <th scope="col">Category</th>
-                        <th scope="col">Description</th>
+                        <th scope="col-sm-3">Description</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th> 
                         <th scope="col">Action</th> 

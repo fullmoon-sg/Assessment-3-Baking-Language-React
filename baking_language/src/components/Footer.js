@@ -25,7 +25,7 @@ export default function Footer() {
                         <EmailIcon/>
                     </div>
                     <div className="col">
-                        <img style={{float:'right'}} src="https://res.cloudinary.com/fullmoon/image/upload/v1612878086/small_logo_kcs2jr.png" alt="Logo" height = "120" width="150"/>
+                        <img id="pic" style={{float:'right'}} src="https://res.cloudinary.com/fullmoon/image/upload/v1612878086/small_logo_kcs2jr.png" alt="Logo" height = "120" width="150"/>
                      
                     </div>
                 </div>

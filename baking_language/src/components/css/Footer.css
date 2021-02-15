@@ -1,7 +1,7 @@
 .main-footer{
     margin-top : 1rem;
     color: white;
-    background-color: pink;
+    background-color: #E7DEDA;
     position : fixed;
     left: 0;
     padding-top : 1em;
@@ -23,7 +23,7 @@ hr{
     .main-footer{
     margin-top : 0.5rem;
     color: white;
-    background-color: pink;
+    background-color: #E7DEDA;
     position : fixed;
     left: 0;
     padding-top : 1em;
@@ -34,6 +34,26 @@ hr{
     };
     p{
         text-align: center !important;
-    }
+    };
+   h4, .h4{
+        font-size : 5vw;
+    };
+
+    .col li{
+    list-style : none;
+    width:100%
+};
+#pic{
+    height: auto;
+    max-width: 100%;
+};
+
+.list-unstyled{
+    margin: 0;
+}
+
+
+
+    
 }
 

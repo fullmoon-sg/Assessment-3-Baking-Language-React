@@ -12,7 +12,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 
 
-const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
+// const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
 
 const formStyle = {
     padding: "40px 20px",
@@ -73,7 +73,7 @@ export default class SignUp extends React.Component {
 
     register = async () => {
 
-        await axios.post(`${base_url}api/user`, {
+        await axios.post(`api/user`, {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             gender: this.state.gender,
