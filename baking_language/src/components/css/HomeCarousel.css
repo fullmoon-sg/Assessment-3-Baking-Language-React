@@ -1,14 +1,16 @@
 .carousel {
-  width:500px;
+  width:1000px;
   height:500px;
   margin: auto;
 }
+
+
 
 @media (max-width: 877px){
 
   .slide{
      margin:0;
-     height: 328px;
+     height: 250px;
       max-width: 100%; 
   }
 
@@ -17,8 +19,11 @@
       padding: 2px;
   }
   
-  
-  
-
+.carousel-inner{
+    margin: 0px;
+    padding:2px;
+    height: 270px;
+    width:100%;
+}
 
 }

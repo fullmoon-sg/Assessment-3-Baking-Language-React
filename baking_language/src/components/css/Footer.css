@@ -1,17 +1,20 @@
 .main-footer{
-    margin-top : 1rem;
-    color: white;
+    /* margin-top : 1rem; */
+    color: black;
     background-color: #E7DEDA;
     position : fixed;
     left: 0;
     padding-top : 1em;
-    position : relative;
+    position : fixed;
     bottom : 0;
-    width : 100%
+    width : 73%;
+    right: 0;
+     margin: auto;
 }
 
 li{
     list-style : none;
+    font-size: 14px;
 }
 
 hr{
@@ -19,17 +22,26 @@ hr{
     padding : 2px;
 }
 
+p{
+    font-size: 14px;
+}
+
+h4{
+    font-size: 16px;
+}
+
 @media (max-width: 877px){
     .main-footer{
-    margin-top : 0.5rem;
-    color: white;
+   margin: auto;
+    color:black;
     background-color: #E7DEDA;
     position : fixed;
     left: 0;
     padding-top : 1em;
-    position : relative;
+    position : fixed;
     bottom : 0;
-    width : 100%
+    width : 100%;
+    right:0;
 
     };
     p{

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 export default function Product(props) {
   const classes = useStyles();
-  const {id,category, image_url, description, price, addToCart} = props;
+  const {id,category, image_url, description,price, addToCart} = props;
   
   return (
     

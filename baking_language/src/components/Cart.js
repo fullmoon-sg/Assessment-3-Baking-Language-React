@@ -5,37 +5,42 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Cart(props) {
- 
-    console.log(props.cartItems)
-    let item = props.cartItems.map(item => (
-        <div key={item.id}>
-            <tr>   
-                    <td>{item.category}</td>
-                    <td>{item.description}</td>
-                    <td>{item.quantity}</td>
-                    <td>${item.price / 100}</td>
-                    <button> Remove from Cart</button>
-             </tr>   
-        </div>
-    ))
+
+    // console.log(props.cartItems)
+    // let item = props.cartItems.map(item => (
+    //     <div key={item.id}>
+    //                 <td>{item.category}</td>
+    //                 <td>{item.description}</td>
+    //                 <td>{item.quantity}</td>
+    //                 <td>${item.price / 100}</td>
+    //                 <button> Remove from Cart</button>
+    //     </div>
+    // ))
 
     return (
-        <React.Fragment>
+        <div>
             <table className="table">
-                <thead> 
+                <thead>
                     <tr>
                         <th scope="col">Category</th>
                         <th scope="col-sm-3">Description</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Price</th> 
-                        <th scope="col">Action</th> 
+                        <th scope="col">Price</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
-            
-            {item}
-            
+                {props.cartItems.map(item => (
+                    <tbody>
+                        <td>{item.category}</td>
+                        <td>{item.description}</td>
+                        <td>{item.quantity}</td>
+                        <td>${item.price / 100}</td>
+                        <button className="btn btn-outline-danger"> Remove from Cart</button>
+                    </tbody>
+                ))}
+
             </table>
-        </React.Fragment>
+        </div>
     )
 }
 

@@ -61,13 +61,9 @@ export default class Login extends React.Component {
             });
         })
         } else{
-            console.log("Login Error")
+            alert("Login Error")
         }
        
-        // this.setState({
-        //     username : '',
-        //     password : ''
-        // })
     }
 
 

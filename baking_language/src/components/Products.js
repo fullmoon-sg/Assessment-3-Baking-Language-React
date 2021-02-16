@@ -18,7 +18,8 @@ export default function Products(props) {
 
     return (
         <Grid container spacing={4}>
-            {context.products.map((productParams) => getProductCard({...productParams, addToCart:props.addToCart}))}
+            {context.products.map((productParams) => getProductCard({...productParams,addToCart:props.addToCart}))}
         </Grid>
+         
     );
 }

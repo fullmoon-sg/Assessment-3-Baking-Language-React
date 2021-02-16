@@ -52,14 +52,14 @@ export default class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstname: '',
-            lastname: '',
-            gender: '',
-            email: '',
-            mobile_number: '',
-            address: '',
-            username: '',
-            password: '',
+            // firstname: '',
+            // lastname: '',
+            // gender: '',
+            // email: '',
+            // mobile_number: '',
+            // address: '',
+            // username: '',
+            // password: '',
             redirect: false,
         
         }
@@ -81,19 +81,20 @@ export default class SignUp extends React.Component {
             mobile_number: this.state.mobile_number,
             address: this.state.address,
             username: this.state.username,
-            password: this.state.password
-        })
-        this.setState({
-            firstname: '',
-            lastname: '',
-            gender: 'male',
-            email: '',
-            mobile_number: '',
-            address: '',
-            username: '',
-            password: '',
-            redirect: true
-        })
+            password: this.state.password,
+            
+        }).then(res => { console.log(res)})
+        // this.setState({
+        //     // firstname: '',
+        //     // lastname: '',
+        //     // gender: 'male',
+        //     // email: '',
+        //     // mobile_number: '',
+        //     // address: '',
+        //     // username: '',
+        //     // password: '',
+        //     redirect: true
+        // })
 
     }
 
@@ -107,7 +108,7 @@ export default class SignUp extends React.Component {
     render() {
 
         if (this.state.redirect) {
-           alert("Sign=in successfully. Proceed to log in now.")
+           alert("Sign-in successfully. Proceed to log in now.")
             
             return (<Redirect to={'/login'} />)
         }

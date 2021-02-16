@@ -26,16 +26,17 @@ class App extends React.Component {
         products: [],
         feedbacks: [],
         cartItems: [],
-        toggle: false
+        toggle: false,
+        quantity : 0
     }
 
     async componentDidMount() {
-        let productResponse = await axios.get('https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/products-api');
+        let productResponse = await axios.get('products-api');
         this.setState({
             products: productResponse.data
         })
 
-        let feedbackResponse = await axios.get('https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/feedbacks-api');
+        let feedbackResponse = await axios.get('feedbacks-api');
         this.setState({
             feedbacks: feedbackResponse.data
         })
@@ -48,6 +49,8 @@ class App extends React.Component {
     }
 
     addToCart = (product) => {
+        console.log(product)
+        
         this.setState({
             cartItems: [...this.state.cartItems, product]
         })
@@ -55,39 +58,39 @@ class App extends React.Component {
 
     render() {
 
-       const { toggle } = this.state;
+        const { toggle } = this.state;
 
         return (
             <div className="app">
-             
+
                 <Router>
-                   <header>
-                <div className="menu" onClick={this.menuToggle}>
-                    <FormatAlignJustifyIcon fontSize="large" />
-                </div>
-                <div className="logo">
-                    <h4><Link to="/">Baking Language</Link></h4>
-                </div>
-                <nav>
-                    <ul className={toggle ? "toggle" : ""}>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/gallery">Gallery</Link></li>
-                        <li><Link to="/products">Products</Link></li>
-                        <li><Link to="/feedbacks">Feedbacks</Link></li>
-                        <li><Link to="/aboutUs">About Us</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li className="close" onClick={this.menuToggle}>
-                            <CloseIcon fontSize="large" />
-                        </li>
-                    </ul>
-                    <div className="nav-cart">
-                        <span>{this.state.cartItems.length}</span>
-                        <Link to="/cart">
-                            <ShoppingCartIcon fontSize="large" />
-                        </Link>
-                    </div>
-                </nav>
-            </header>
+                    <header>
+                        <div className="menu" onClick={this.menuToggle}>
+                            <FormatAlignJustifyIcon fontSize="large" />
+                        </div>
+                        <div className="logo">
+                            <h4><Link to="/">Baking Language</Link></h4>
+                        </div>
+                        <nav>
+                            <ul className={toggle ? "toggle" : ""}>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/gallery">Gallery</Link></li>
+                                <li><Link to="/products">Products</Link></li>
+                                <li><Link to="/feedbacks">Feedbacks</Link></li>
+                                <li><Link to="/aboutUs">About Us</Link></li>
+                                <li><Link to="/login">Login</Link></li>
+                                <li className="close" onClick={this.menuToggle}>
+                                    <CloseIcon fontSize="large" />
+                                </li>
+                            </ul>
+                            <div className="nav-cart">
+                                <span>{this.state.cartItems.length}</span>
+                                <Link to="/cart">
+                                    <ShoppingCartIcon fontSize="large" />
+                                </Link>
+                            </div>
+                        </nav>
+                    </header>
                     <Switch>
                         <Route exact path="/">
                             <Home />
@@ -115,13 +118,13 @@ class App extends React.Component {
                             <SignUp />
                         </Route>
                         <Route exact path="/cart">
-                         <Cart cartItems={this.state.cartItems} /> 
+                            <Cart cartItems={this.state.cartItems} />
                         </Route>
                     </Switch>
                 </Router>
-            <Footer />
+                <Footer />
             </div>
-         
+
         )
     }
 

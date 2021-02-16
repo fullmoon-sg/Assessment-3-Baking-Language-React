@@ -1,9 +1,7 @@
 import React from 'react'
 
 const ProductContext = React.createContext({
-
-    'products': []
-    
+    'products': [],  
 })
 
 export default ProductContext
