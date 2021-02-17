@@ -38,8 +38,16 @@ export default function Cart(props) {
                         <button onClick={ () => props.removeFromCart(item)} className="btn btn-outline-danger"> Remove from Cart</button>
                     </tbody>
                 ))}
-
             </table>
+            {props.cartItems.length !== 0 && (
+            <div>
+                Total Cost : {""}
+                ${props.cartItems.reduce((accumulate,currentItem) => accumulate + ((currentItem.price * currentItem.quantity)/100), 0)}
+            </div>
+
+            )}
+           
+
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './css/Footer.css'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import EmailIcon from '@material-ui/icons/Email';
+import PinterestIcon from '@material-ui/icons/Pinterest';
 
 export default function Footer() {
     return (
@@ -20,9 +20,9 @@ export default function Footer() {
                     </div>
                     <div className="col" style={{float:'center'}}>
                         <h4>Follow Us</h4> 
-                        <FacebookIcon />
-                        <InstagramIcon />
-                        <EmailIcon/>
+                        <FacebookIcon onClick={event =>  window.location.href='https://www.facebook.com/Baking-Language-1472693163005638/?ref=bookmarks'}/>
+                        <InstagramIcon onClick={event =>  window.location.href='https://www.instagram.com/bakinglanguage/'} />
+                        <PinterestIcon onClick={event =>  window.location.href='https://www.pinterest.com/bakinglanguage/'}/>
                     </div>
                     <div className="col">
                         <img id="pic" style={{float:'right'}} src="https://res.cloudinary.com/fullmoon/image/upload/v1612878086/small_logo_kcs2jr.png" alt="Logo" height = "100" width="125"/>

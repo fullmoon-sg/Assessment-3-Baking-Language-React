@@ -1,5 +1,5 @@
 export const img_paths = [
-   "https://res.cloudinary.com/fullmoon/image/upload/v1612538889/carousell/IMG_6914_fcl8sy.jpg",
+   "https://res.cloudinary.com/fullmoon/image/upload/v1613535661/carousell/ladybug_xkc6in.jpg",
    "https://res.cloudinary.com/fullmoon/image/upload/v1612538889/carousell/ct4_pqqnpi.jpg",
    "https://res.cloudinary.com/fullmoon/image/upload/v1612538889/carousell/Collage2_b0oogu.jpg",
    "https://res.cloudinary.com/fullmoon/image/upload/v1612538889/carousell/IMG_6806_cjgayt.jpg",

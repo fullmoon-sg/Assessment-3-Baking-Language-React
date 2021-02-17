@@ -1,14 +1,12 @@
 .main-footer{
-    /* margin-top : 1rem; */
-    color: black;
-    background-color: #E7DEDA;
     position : fixed;
     left: 0;
-    padding-top : 1em;
-    position : fixed;
-    bottom : 0;
-    width : 73%;
     right: 0;
+    bottom : 0;
+    color: black;
+    background-color: #E7DEDA;
+    padding-top : 1em;
+    width : 73%;
      margin: auto;
 }
 
@@ -32,13 +30,13 @@ h4{
 
 @media (max-width: 877px){
     .main-footer{
+   position : fixed;
    margin: auto;
     color:black;
     background-color: #E7DEDA;
-    position : fixed;
     left: 0;
     padding-top : 1em;
-    position : fixed;
+    
     bottom : 0;
     width : 100%;
     right:0;

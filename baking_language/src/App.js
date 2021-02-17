@@ -27,7 +27,7 @@ class App extends React.Component {
         feedbacks: [],
         cartItems: [],
         toggle: false,
-        quantity : 0
+
     }
 
     async componentDidMount() {
@@ -49,27 +49,32 @@ class App extends React.Component {
     }
 
     addToCart = (product) => {
-        console.log(product)
-        
-        this.setState({
-            cartItems: [...this.state.cartItems, product]
-        })
+        const cartItems = this.state.cartItems.slice();
+        let existInCart = false;
+        cartItems.forEach(item => {
+            if (item.id === product.id) {
+                item.quantity++;
+                existInCart = true;
+            }
+        });
+        if (!existInCart) {
+            this.setState({
+                cartItems: [...this.state.cartItems, product]
+            })
+        }
     }
 
     removeFromCart = (product) => {
         const cartItems = this.state.cartItems.slice();
         this.setState({
-            cartItems :  cartItems.filter((x) => x.id !== product.id)
-        });  
+            cartItems: cartItems.filter((x) => x.id !== product.id)
+        });
     }
 
     render() {
-
         const { toggle } = this.state;
-
         return (
             <div className="app">
-
                 <Router>
                     <header>
                         <div className="menu" onClick={this.menuToggle}>
@@ -125,17 +130,15 @@ class App extends React.Component {
                             <SignUp />
                         </Route>
                         <Route exact path="/cart">
-                            <Cart cartItems={this.state.cartItems} 
-                            removeFromCart={this.removeFromCart}/>
+                            <Cart cartItems={this.state.cartItems}
+                                removeFromCart={this.removeFromCart} />
                         </Route>
                     </Switch>
                 </Router>
                 <Footer />
             </div>
-
         )
     }
-
 }
 
 export default App;

@@ -10,7 +10,7 @@ function HomeCarousel() {
                     <img
                         className="d-block w-100"
                         width={900} height={500} 
-                        src="https://res.cloudinary.com/fullmoon/image/upload/v1612538889/carousell/IMG_6806_cjgayt.jpg"
+                        src="https://res.cloudinary.com/fullmoon/image/upload/v1613535661/carousell/ladybug_xkc6in.jpg"
                         alt="First slide"
                     />
                 </Carousel.Item>
@@ -18,7 +18,7 @@ function HomeCarousel() {
                     <img
                         className="d-block w-100"
                         width={900} height={500} 
-                        src="https://res.cloudinary.com/fullmoon/image/upload/v1612538888/carousell/Bunny_Cake_3_esjywj.jpg"
+                        src="https://res.cloudinary.com/fullmoon/image/upload/v1613535972/carousell/Sanrio_11_bhtix8.jpg"
                         alt="Third slide"
                     />
                 </Carousel.Item>

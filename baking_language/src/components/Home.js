@@ -72,9 +72,9 @@ class Home extends React.Component {
                             <div>
                                 <img src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="200" width="250" />
                             </div>
-                            <div>
-                                <p>Thai Milk Tea Sponge Cake.</p>
-                                <p> Login to access the free receipt</p>
+                            <div class="promo-text">
+                                <h4>Thai Milk Tea Sponge Cake.</h4>
+                                <h4> Login to access the free receipt</h4>
                             </div>
                         </div>
                         <div class="promo">
