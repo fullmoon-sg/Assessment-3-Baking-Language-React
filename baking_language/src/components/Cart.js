@@ -31,11 +31,11 @@ export default function Cart(props) {
                 </thead>
                 {props.cartItems.map(item => (
                     <tbody>
-                        <td>{item.category}</td>
+                        <td key={item.id}>{item.category}</td>
                         <td>{item.description}</td>
                         <td>{item.quantity}</td>
                         <td>${item.price / 100}</td>
-                        <button className="btn btn-outline-danger"> Remove from Cart</button>
+                        <button onClick={ () => props.removeFromCart(item)} className="btn btn-outline-danger"> Remove from Cart</button>
                     </tbody>
                 ))}
 

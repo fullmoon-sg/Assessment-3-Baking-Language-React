@@ -56,6 +56,13 @@ class App extends React.Component {
         })
     }
 
+    removeFromCart = (product) => {
+        const cartItems = this.state.cartItems.slice();
+        this.setState({
+            cartItems :  cartItems.filter((x) => x.id !== product.id)
+        });  
+    }
+
     render() {
 
         const { toggle } = this.state;
@@ -118,7 +125,8 @@ class App extends React.Component {
                             <SignUp />
                         </Route>
                         <Route exact path="/cart">
-                            <Cart cartItems={this.state.cartItems} />
+                            <Cart cartItems={this.state.cartItems} 
+                            removeFromCart={this.removeFromCart}/>
                         </Route>
                     </Switch>
                 </Router>
