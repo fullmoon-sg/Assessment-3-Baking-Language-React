@@ -1,0 +1,14 @@
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table{
+    border-top : 3px solid grey;
+    width: 100%;
+    max-width: 500px;
+}
+
+@media (max-width: 877px){
+
+}

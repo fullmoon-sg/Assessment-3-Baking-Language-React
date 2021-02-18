@@ -32,12 +32,40 @@ export default function Cart(props) {
                 ))}
             </table>
             {props.cartItems.length !== 0 && (
-                <div className="total">
-                    Sub Total : {""}
-                {props.cartTotal}
-                </div>
-               
+               <div className="total-price">
+               <table >
+                   <tr>
+                       <td>Sub-Total</td>
+                  <td>{(props.subTotal).toFixed(2)}</td>
+                   </tr>
+                   <tr>
+                       <td>GST</td>
+                       <td>{(props.gst).toFixed(2)}</td>
+                   </tr>
+                  <tr>
+                      <td>Total</td>
+                      <td>{(props.cartTotal).toFixed(2)}</td>
+                  </tr>
 
+            </table>
+            </div>
+                /* <div className="total">
+                     <hr/>
+                    Sub Total : {""}
+                    {props.subTotal}
+                    <div>
+                        <hr/>
+                        GST : {""}
+                        {(props.subTotal * GST).toFixed(2)}
+                    </div>
+                    <div>
+                        <hr/>
+                        Total Price : {""}
+                        {(props.cartTotal).toFixed(2)}
+                    </div>
+                </div> */
+
+                
             )}
 
 

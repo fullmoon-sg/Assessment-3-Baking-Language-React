@@ -28,7 +28,9 @@ class App extends React.Component {
         cartItems: [],
         token: '',
         toggle: false,
-        cartTotal: '0'
+        gst: 0,
+        cartTotal: 0,
+        subTotal: 0
     }
 
     async componentDidMount() {
@@ -82,16 +84,29 @@ class App extends React.Component {
                 cartItems: [...this.state.cartItems, product],
             })
         }
-        let total = this.state.cartItems.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
-         await this.setState({
-             cartTotal : total})
+        let subtotal = this.state.cartItems.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
+         let gst = 0.07 * subtotal
+         let total = gst + subtotal
+        await this.setState({
+             subTotal : subtotal,
+             gst : gst,
+             cartTotal : total 
+            })
 
     }
 
     removeFromCart = (product) => {
-        const cartItems = this.state.cartItems.slice();
-        this.setState({
-            cartItems: cartItems.filter((x) => x.id !== product.id)
+         const cartItems = this.state.cartItems.slice();
+        let newCart = cartItems.filter((x) => x.id !== product.id)
+       let newSubTotal = newCart.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
+        let newGst = newSubTotal * 0.07;
+        let newTotal = newSubTotal + newGst
+       console.log(newSubTotal,newTotal)
+       this.setState({
+            subTotal : newSubTotal,
+            gst : newGst,
+            cartTotal : newTotal,
+            cartItems: newCart
         });
     }
 
@@ -157,6 +172,8 @@ class App extends React.Component {
                         </Route>
                         <Route exact path="/cart">
                             <Cart cartItems={this.state.cartItems}
+                            subTotal = {this.state.subTotal}
+                            gst={this.state.gst}
                             cartTotal={this.state.cartTotal}
                                 removeFromCart={this.removeFromCart} />
                         </Route>

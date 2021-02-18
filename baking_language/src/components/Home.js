@@ -51,7 +51,6 @@ class Home extends React.Component {
         localStorage.clear();
         this.props.removeToken(this.props.token);
         this.setState({
-            token: '',
             redirect: true
         })
     }
@@ -71,8 +70,8 @@ class Home extends React.Component {
                     <HomeCarousel />
                     <div className="grid-container">
                         <div className="promo">
-                            <div className="promo-image">
-                                <img src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="250" width="350" />
+                            <div >
+                                <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="250" width="350" />
                             </div>
                             <div className="promo-text">
                                 <h4>Thai Milk Tea Sponge Cake.</h4>

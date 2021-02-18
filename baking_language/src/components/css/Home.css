@@ -18,12 +18,6 @@
     font-weight: bold;
 }
 
-.promo-image{
-    height: 300px;
-    width: 350px;
-}
-
-
 @media (max-width: 877px){
 
 .promo{
@@ -32,8 +26,11 @@
     width : 150px;
     border: 2px green solid;
     position : relative;
+}
 
-  
+.promo-image{
+    height: 100%;
+    width: auto;
 }
 
 

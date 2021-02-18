@@ -8,7 +8,6 @@ export default function Products(props) {
     const context = useContext(ProductContext);
 
     const getProductCard = (productParams, id) => {
-        console.log(productParams, id)
         return (
             <Grid item xs={12} sm={4} key={id.toString()}>
                 <Product {...productParams} 
