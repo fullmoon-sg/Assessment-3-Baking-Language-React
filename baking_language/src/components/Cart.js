@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Cart.css'
 
@@ -15,7 +14,7 @@ export default function Cart(props) {
                         <th scope="col">Category</th>
                         <th scope="col-sm-3">Description</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Unit Cost</th>
+                        <th scope="col">Unit</th>
                         <th scope="col">Price</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -31,44 +30,34 @@ export default function Cart(props) {
                     </tbody>
                 ))}
             </table>
+            {props.cartItems.length === 0 && (
+                <h3>You have not added any item to the Cart</h3> 
+            )}
             {props.cartItems.length !== 0 && (
-               <div className="total-price">
+              <div>
+              <div className="total-price">
                <table >
                    <tr>
                        <td>Sub-Total</td>
-                  <td>{(props.subTotal).toFixed(2)}</td>
+                  <td>${(props.subTotal).toFixed(2)}</td>
                    </tr>
                    <tr>
                        <td>GST</td>
-                       <td>{(props.gst).toFixed(2)}</td>
+                       <td>${(props.gst).toFixed(2)}</td>
                    </tr>
                   <tr>
                       <td>Total</td>
-                      <td>{(props.cartTotal).toFixed(2)}</td>
+                      <td>${(props.cartTotal).toFixed(2)}</td>
                   </tr>
-
             </table>
             </div>
-                /* <div className="total">
-                     <hr/>
-                    Sub Total : {""}
-                    {props.subTotal}
-                    <div>
-                        <hr/>
-                        GST : {""}
-                        {(props.subTotal * GST).toFixed(2)}
-                    </div>
-                    <div>
-                        <hr/>
-                        Total Price : {""}
-                        {(props.cartTotal).toFixed(2)}
-                    </div>
-                </div> */
-
-                
+            
+  <div className="paynow">
+            <button onClick={ () => props.payNow}  className="btn btn-success">Pay Now</button>
+            </div>
+</div>
             )}
-
-
+           
         </div>
     )
 }

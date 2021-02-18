@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import HomeCarousel from './HomeCarousel'
 import axios from 'axios';
-//  
 import './css/Home.css'
 
 class Home extends React.Component {
@@ -36,15 +35,12 @@ class Home extends React.Component {
     //     )
     // }
 
-    getProfile = async () => {
-        
+    getProfile = async () => {    
         let response = await axios.get('api/user/profile', {
             headers: {
                 Authorization: 'Bearer ' + this.props.token
             }
         });
-        console.log(response.data);
-
     };
 
     logout() {
@@ -71,7 +67,7 @@ class Home extends React.Component {
                     <div className="grid-container">
                         <div className="promo">
                             <div >
-                                <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="250" width="350" />
+                                <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="250" width="350" />
                             </div>
                             <div className="promo-text">
                                 <h4>Thai Milk Tea Sponge Cake.</h4>
@@ -86,7 +82,7 @@ class Home extends React.Component {
                         </div>
 
                     </div>
-         <button onClick={this.getProfile}>Get User Profile</button>
+                    <button onClick={this.getProfile}>Get User Profile</button>
                     <button onClick={this.logout}>Log Out</button>
                    
                 </div>

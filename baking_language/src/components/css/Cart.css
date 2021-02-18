@@ -1,14 +1,50 @@
 .total-price{
     display: flex;
     justify-content: flex-end;
+    margin: 5px 185px 5px 100px;
 }
 
 .total-price table{
     border-top : 3px solid grey;
+    border-bottom : 3px solid grey;
     width: 100%;
-    max-width: 500px;
+    max-width: 350px;
 }
 
+.table{
+    margin-top : 10px;
+}
+
+button{
+    margin : 5px
+}
+
+h3{
+    margin : 10px;
+    text-align: center
+}
+
+.paynow{
+    position: relative;
+    left: 1175px;
+    margin : 20px
+}
+
+
 @media (max-width: 877px){
+
+body{
+    font-size:  0.75rem;
+}
+
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 65px 5px 200px;
+}
+
+.paynow{
+    margin: 20px 150px;
+}
 
 }

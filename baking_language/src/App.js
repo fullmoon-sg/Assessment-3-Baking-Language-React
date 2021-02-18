@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import axios from 'axios'
-import './App.css'
 import Products from './components/Products'
 import ProductContext from "./context/ProductContext"
 import Home from './components/Home'
@@ -63,9 +62,9 @@ class App extends React.Component {
         })
     }
 
-    removeToken=(token) => {
+    removeToken = (token) => {
         this.setState({
-            token:""
+            token: ""
         })
     }
 
@@ -78,34 +77,33 @@ class App extends React.Component {
                 existInCart = true;
             }
         });
-        
+
         if (!existInCart) {
             await this.setState({
                 cartItems: [...this.state.cartItems, product],
             })
         }
         let subtotal = this.state.cartItems.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
-         let gst = 0.07 * subtotal
-         let total = gst + subtotal
+        let gst = 0.07 * subtotal
+        let total = gst + subtotal
         await this.setState({
-             subTotal : subtotal,
-             gst : gst,
-             cartTotal : total 
-            })
+            subTotal: subtotal,
+            gst: gst,
+            cartTotal: total
+        })
 
     }
 
     removeFromCart = (product) => {
-         const cartItems = this.state.cartItems.slice();
+        const cartItems = this.state.cartItems.slice();
         let newCart = cartItems.filter((x) => x.id !== product.id)
-       let newSubTotal = newCart.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
+        let newSubTotal = newCart.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
         let newGst = newSubTotal * 0.07;
         let newTotal = newSubTotal + newGst
-       console.log(newSubTotal,newTotal)
-       this.setState({
-            subTotal : newSubTotal,
-            gst : newGst,
-            cartTotal : newTotal,
+        this.setState({
+            subTotal: newSubTotal,
+            gst: newGst,
+            cartTotal: newTotal,
             cartItems: newCart
         });
     }
@@ -144,9 +142,9 @@ class App extends React.Component {
                     </header>
                     <Switch>
                         <Route exact path="/">
-                            <Home 
-                            token={this.state.token}
-                            removeToken={this.removeToken}/>
+                            <Home
+                                token={this.state.token}
+                                removeToken={this.removeToken} />
                         </Route>
                         <Route exact path="/gallery">
                             <Gallery />
@@ -162,19 +160,19 @@ class App extends React.Component {
                             </FeedbackContext.Provider>
                         </Route>
                         <Route exact path="/aboutUs">
-                            <AboutUs  token={this.state.token}/>
+                            <AboutUs token={this.state.token} />
                         </Route>
                         <Route exact path="/login">
-                            <Login setToken={this.setToken}/>
+                            <Login setToken={this.setToken} />
                         </Route>
                         <Route exact path="/login/signup">
                             <SignUp />
                         </Route>
                         <Route exact path="/cart">
                             <Cart cartItems={this.state.cartItems}
-                            subTotal = {this.state.subTotal}
-                            gst={this.state.gst}
-                            cartTotal={this.state.cartTotal}
+                                subTotal={this.state.subTotal}
+                                gst={this.state.gst}
+                                cartTotal={this.state.cartTotal}
                                 removeFromCart={this.removeFromCart} />
                         </Route>
                     </Switch>
