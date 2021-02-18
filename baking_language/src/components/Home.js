@@ -37,19 +37,21 @@ class Home extends React.Component {
     // }
 
     getProfile = async () => {
-        let response = await axios.get(`api/user/profile/`, {
+        
+        let response = await axios.get('api/user/profile', {
             headers: {
-                Authorization: 'Bearer' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + this.props.token
             }
         });
         console.log(response.data);
+
     };
 
     logout() {
-        sessionStorage.setItem('userData', '');
-        sessionStorage.clear();
         localStorage.clear();
+        this.props.removeToken(this.props.token);
         this.setState({
+            token: '',
             redirect: true
         })
     }
@@ -67,31 +69,29 @@ class Home extends React.Component {
             <React.Fragment>
                 <div>
                     <HomeCarousel />
-                    <div class="grid-container">
+                    <div className="grid-container">
                         <div className="promo">
-                            <div>
-                                <img src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="200" width="250" />
+                            <div className="promo-image">
+                                <img src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" height="250" width="350" />
                             </div>
-                            <div class="promo-text">
+                            <div className="promo-text">
                                 <h4>Thai Milk Tea Sponge Cake.</h4>
                                 <h4> Login to access the free receipt</h4>
                             </div>
                         </div>
-                        <div class="promo">
+                        <div className="promo">
 
                         </div>
-                        <div class="promo">
+                        <div className="promo">
 
                         </div>
 
                     </div>
-                    {/* <button onClick={this.logout}>Log Out</button>
-                     <button onClick={this.getProfile}>Get User Profile</button> */}
+         <button onClick={this.getProfile}>Get User Profile</button>
+                    <button onClick={this.logout}>Log Out</button>
+                   
                 </div>
-
-
             </React.Fragment>
-
         )
     }// end of render
 }

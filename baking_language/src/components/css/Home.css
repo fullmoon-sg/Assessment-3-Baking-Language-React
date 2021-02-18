@@ -1,44 +1,27 @@
 .grid-container{
     display: flex;
-    background-color: lightgray;
+   
 }
 
 .promo{
     display: flex;
-    height: 200px;
+    height: 300px;
     width : 480px;
- 
     position : relative;  
+    border: 5px solid grey;
+    background: white;
+   
 }
 
 .promo-text{
     text-align: center;
     font-weight: bold;
-    -webkit-text-stroke: 0.1vw lightblue;
 }
 
-.promo-text::before{
-    position : absolute;
-    top: 0;
-    left:0;
-    width: 0;
-    height: 100%;
-    color: black;
-    -webkit-text-stroke: 0vw lightblue;
-    border-right : 2px solid black;
-    overflow: hidden;
-    animation : animate 6s linear infinite;
+.promo-image{
+    height: 300px;
+    width: 350px;
 }
-
-@keyframes animate{
-    
-        0%, 10%,100%{
-            width: 0;
-        }
-        70%,90%{
-            width: 100%;
-        }
-    }
 
 
 @media (max-width: 877px){
@@ -49,7 +32,7 @@
     width : 150px;
     border: 2px green solid;
     position : relative;
-    top:20px;
+
   
 }
 

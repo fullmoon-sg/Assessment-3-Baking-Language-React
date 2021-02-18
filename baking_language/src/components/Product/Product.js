@@ -30,7 +30,7 @@ export default function Product(props) {
   
   return (
     
-    <Card className={classes.card} key={id}>
+    <Card className={classes.card} key={id.toString()}>
         <CardHeader
         avatar={
        <Avatar aria-label="recipe" className={classes.avatar} />    

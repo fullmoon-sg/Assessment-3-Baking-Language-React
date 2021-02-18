@@ -12,12 +12,12 @@ import Login from './components/Login'
 import FeedbackContext from "./context/FeedbackContext"
 import SignUp from "./components/SignUp"
 import Cart from "./components/Cart"
-import "./App.css"
 import Footer from './components/Footer'
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import CloseIcon from '@material-ui/icons/Close';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import './components/css/Menu.css';
+import "./App.css"
 
 
 class App extends React.Component {
@@ -26,20 +26,27 @@ class App extends React.Component {
         products: [],
         feedbacks: [],
         cartItems: [],
+        token: '',
         toggle: false,
-
+        cartTotal: '0'
     }
 
     async componentDidMount() {
         let productResponse = await axios.get('products-api');
-        this.setState({
+        await this.setState({
             products: productResponse.data
         })
 
         let feedbackResponse = await axios.get('feedbacks-api');
-        this.setState({
+        await this.setState({
             feedbacks: feedbackResponse.data
         })
+
+        if (!this.state.token) {
+            await this.setState({
+                'token': localStorage.getItem('adonisToken')
+            })
+        }
     }
 
     menuToggle = () => {
@@ -48,7 +55,19 @@ class App extends React.Component {
         })
     }
 
-    addToCart = (product) => {
+    setToken = (token) => {
+        this.setState({
+            token
+        })
+    }
+
+    removeToken=(token) => {
+        this.setState({
+            token:""
+        })
+    }
+
+    addToCart = async (product) => {
         const cartItems = this.state.cartItems.slice();
         let existInCart = false;
         cartItems.forEach(item => {
@@ -57,11 +76,16 @@ class App extends React.Component {
                 existInCart = true;
             }
         });
+        
         if (!existInCart) {
-            this.setState({
-                cartItems: [...this.state.cartItems, product]
+            await this.setState({
+                cartItems: [...this.state.cartItems, product],
             })
         }
+        let total = this.state.cartItems.reduce((accumulate, currentItem) => accumulate + ((currentItem.price * currentItem.quantity) / 100), 0);
+         await this.setState({
+             cartTotal : total})
+
     }
 
     removeFromCart = (product) => {
@@ -105,7 +129,9 @@ class App extends React.Component {
                     </header>
                     <Switch>
                         <Route exact path="/">
-                            <Home />
+                            <Home 
+                            token={this.state.token}
+                            removeToken={this.removeToken}/>
                         </Route>
                         <Route exact path="/gallery">
                             <Gallery />
@@ -121,16 +147,17 @@ class App extends React.Component {
                             </FeedbackContext.Provider>
                         </Route>
                         <Route exact path="/aboutUs">
-                            <AboutUs />
+                            <AboutUs  token={this.state.token}/>
                         </Route>
                         <Route exact path="/login">
-                            <Login />
+                            <Login setToken={this.setToken}/>
                         </Route>
                         <Route exact path="/login/signup">
                             <SignUp />
                         </Route>
                         <Route exact path="/cart">
                             <Cart cartItems={this.state.cartItems}
+                            cartTotal={this.state.cartTotal}
                                 removeFromCart={this.removeFromCart} />
                         </Route>
                     </Switch>

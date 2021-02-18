@@ -28,8 +28,8 @@ const buttonStyle = {
 
 export default class Login extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
             this.state = {
                 username: "",
                 password: "",
@@ -55,7 +55,7 @@ export default class Login extends React.Component {
              await axios.post(`api/user/login`, loginData).then(res => {
             const token = res.data.token; 
             localStorage.setItem('adonisToken', token);
-            sessionStorage.setItem('userData',loginData)
+            this.props.setToken(token);
             this.setState({
                 redirect : true
             });
