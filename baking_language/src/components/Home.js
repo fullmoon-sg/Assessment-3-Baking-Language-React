@@ -41,6 +41,7 @@ class Home extends React.Component {
                 Authorization: 'Bearer ' + this.props.token
             }
         });
+        console.log(response.data)
     };
 
     logout() {
@@ -66,14 +67,11 @@ class Home extends React.Component {
                     <HomeCarousel />
                     <div className="grid-container">
                         <div className="promo">
-                            <div >
-                                <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="250" width="350" />
-                            </div>
-                            <div className="promo-text">
-                                <h4>Thai Milk Tea Sponge Cake.</h4>
-                                <h4> Login to access the free receipt</h4>
-                            </div>
-                        </div>
+                          
+                      <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="290" width="460" />
+                       <h4 className="promo-h4"><span>Thai Milk Sponge Cake Receipt : <br/>
+                      Login to view the receipt</span></h4>
+                       </div>
                         <div className="promo">
 
                         </div>

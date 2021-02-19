@@ -108,6 +108,23 @@ class App extends React.Component {
         });
     }
 
+   payNow = async () => {
+    // convert string to JSON
+    let cartContent = this.state.cartItems;
+    let option = {
+      headers: {
+        Authorization: "Bearer " + this.state.token
+      }
+    };
+    console.log(option);
+    let response = await axios.put(
+      "api/cart",
+      { cart_content: cartContent },
+      option
+    );
+    console.log(response);
+  };
+
     render() {
         const { toggle } = this.state;
         return (
@@ -173,7 +190,8 @@ class App extends React.Component {
                                 subTotal={this.state.subTotal}
                                 gst={this.state.gst}
                                 cartTotal={this.state.cartTotal}
-                                removeFromCart={this.removeFromCart} />
+                                removeFromCart={this.removeFromCart}
+                                payNow={this.payNow} />
                         </Route>
                     </Switch>
                 </Router>
