@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Receipt from './components/Receipt'
 import AboutUs from './components/AboutUs'
 import Feedbacks from './components/Feedbacks'
+import MyProfile from './components/MyProfile'
 import Login from './components/Login'
 import FeedbackContext from "./context/FeedbackContext"
 import SignUp from "./components/SignUp"
@@ -30,7 +31,7 @@ class App extends React.Component {
         login : false,
         gst: 0,
         cartTotal: 0,
-        subTotal: 0
+        subTotal: 0,
     }
 
     async componentDidMount() {
@@ -171,6 +172,9 @@ class App extends React.Component {
                                 <li><Link to="/products">Products</Link></li>
                                 <li><Link to="/feedbacks">Feedbacks</Link></li>
                                 <li><Link to="/aboutUs">About Us</Link></li>
+                                  {this.state.login === true && (
+                                    <li><Link to="/profile">My Profile</Link></li>
+                                )}
                                {this.state.login === false && (
                                    <li><Link to="/login">Login</Link></li>
                                 )}
@@ -211,10 +215,14 @@ class App extends React.Component {
                         <Route exact path="/aboutUs">
                             <AboutUs />
                         </Route>
+                        <Route exact path="/profile">
+                            <MyProfile token={this.state.token}/>
+                        </Route>
                         <Route exact path="/login">
                             <Login 
                             setToken={this.setToken}
-                            confirmLogin={this.confirmLogin} />
+                            confirmLogin={this.confirmLogin}
+                            />
                         </Route>
                         <Route exact path="/login/signup">
                             <SignUp />

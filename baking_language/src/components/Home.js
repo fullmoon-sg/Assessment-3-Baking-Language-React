@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import HomeCarousel from './HomeCarousel'
 import './css/Home.css'
+import axios from 'axios'
 
 class Home extends React.Component {
 
@@ -40,7 +41,7 @@ class Home extends React.Component {
     //             Authorization: 'Bearer ' + this.props.token
     //         }
     //     });
-    //     console.log(response.data.username)
+    //     console.log(response.data)
     // };
 
     // logout() {
@@ -79,9 +80,9 @@ class Home extends React.Component {
                         </div>
 
                     </div>
-                    {/* <button onClick={this.getProfile}>Get User Profile</button>
-                    <button onClick={this.logout}>Log Out</button>
-                    */}
+                    {/* <button onClick={this.getProfile}>Get User Profile</button> */}
+                    {/* <button onClick={this.logout}>Log Out</button> */}
+                   
                 </div>
             </React.Fragment>
         )
