@@ -1,10 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Products from './components/Products'
 import ProductContext from "./context/ProductContext"
 import Home from './components/Home'
-import Gallery from './components/Gallery'
+import Receipt from './components/Receipt'
 import AboutUs from './components/AboutUs'
 import Feedbacks from './components/Feedbacks'
 import Login from './components/Login'
@@ -27,6 +27,7 @@ class App extends React.Component {
         cartItems: [],
         token: '',
         toggle: false,
+        login : false,
         gst: 0,
         cartTotal: 0,
         subTotal: 0
@@ -64,7 +65,24 @@ class App extends React.Component {
 
     removeToken = (token) => {
         this.setState({
-            token: ""
+            token: "",
+            login : false
+        })
+    }
+
+    confirmLogin = () => {
+        this.setState({
+            login : true
+        })
+    }
+
+    logout = () => {
+        localStorage.clear();
+        // this.removeToken(this.state.token);
+        this.setState({
+            token: "",
+            login: false,
+            redirect: true
         })
     }
 
@@ -109,7 +127,12 @@ class App extends React.Component {
     }
 
    payNow = async () => {
-    // convert string to JSON
+       console.log("Test")
+   if(this.state.token === null){
+       alert("Please proceed to login");
+       return (<Redirect to={'/login'} />)
+
+   }else {
     let cartContent = this.state.cartItems;
     let option = {
       headers: {
@@ -123,7 +146,8 @@ class App extends React.Component {
       option
     );
     console.log(response);
-  };
+   }};
+
 
     render() {
         const { toggle } = this.state;
@@ -138,13 +162,21 @@ class App extends React.Component {
                             <h4><Link to="/">Baking Language</Link></h4>
                         </div>
                         <nav>
-                            <ul className={toggle ? "toggle" : ""}>
+                            <ul className={toggle ? "toggle" : ""}> 
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/gallery">Gallery</Link></li>
+                                {/* <li><Link to="/gallery">Gallery</Link></li> */}
+                                {this.state.login === true && (
+                                    <li><Link to="/receipt">Free Receipt</Link></li>
+                                )}
                                 <li><Link to="/products">Products</Link></li>
                                 <li><Link to="/feedbacks">Feedbacks</Link></li>
                                 <li><Link to="/aboutUs">About Us</Link></li>
-                                <li><Link to="/login">Login</Link></li>
+                               {this.state.login === false && (
+                                   <li><Link to="/login">Login</Link></li>
+                                )}
+                                {this.state.login === true && (
+                                   <li><Link to="/login" onClick={this.logout}>Logout</Link></li>
+                                )}
                                 <li className="close" onClick={this.menuToggle}>
                                     <CloseIcon fontSize="large" />
                                 </li>
@@ -163,8 +195,8 @@ class App extends React.Component {
                                 token={this.state.token}
                                 removeToken={this.removeToken} />
                         </Route>
-                        <Route exact path="/gallery">
-                            <Gallery />
+                        <Route exact path="/receipt">
+                            <Receipt/>
                         </Route>
                         <Route exact path="/products">
                             <ProductContext.Provider value={this.state}>
@@ -177,10 +209,12 @@ class App extends React.Component {
                             </FeedbackContext.Provider>
                         </Route>
                         <Route exact path="/aboutUs">
-                            <AboutUs token={this.state.token} />
+                            <AboutUs />
                         </Route>
                         <Route exact path="/login">
-                            <Login setToken={this.setToken} />
+                            <Login 
+                            setToken={this.setToken}
+                            confirmLogin={this.confirmLogin} />
                         </Route>
                         <Route exact path="/login/signup">
                             <SignUp />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom'
 import HomeCarousel from './HomeCarousel'
-import axios from 'axios';
 import './css/Home.css'
 
 class Home extends React.Component {
@@ -11,7 +10,7 @@ class Home extends React.Component {
         this.state = {
             redirect: false,
         }
-        this.logout = this.logout.bind(this)
+        // this.logout = this.logout.bind(this)
     }
 
     // componentWillMount() {
@@ -35,22 +34,23 @@ class Home extends React.Component {
     //     )
     // }
 
-    getProfile = async () => {    
-        let response = await axios.get('api/user/profile', {
-            headers: {
-                Authorization: 'Bearer ' + this.props.token
-            }
-        });
-        console.log(response.data)
-    };
+    // getProfile = async () => {    
+    //     let response = await axios.get('api/user/profile', {
+    //         headers: {
+    //             Authorization: 'Bearer ' + this.props.token
+    //         }
+    //     });
+    //     console.log(response.data.username)
+    // };
 
-    logout() {
-        localStorage.clear();
-        this.props.removeToken(this.props.token);
-        this.setState({
-            redirect: true
-        })
-    }
+    // logout() {
+    //     localStorage.clear();
+    //     this.props.removeToken(this.props.token);
+    //     this.setState({
+    //         redirect: true
+    //     })
+    // }
+
     render() {
 
         if (this.state.redirect) {
@@ -67,11 +67,10 @@ class Home extends React.Component {
                     <HomeCarousel />
                     <div className="grid-container">
                         <div className="promo">
-                          
-                      <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="290" width="460" />
-                       <h4 className="promo-h4"><span>Thai Milk Sponge Cake Receipt : <br/>
+                            <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="290" width="460" />
+                            <h4 className="promo-h4"><span>Thai Milk Sponge Cake Receipt : <br />
                       Login to view the receipt</span></h4>
-                       </div>
+                        </div>
                         <div className="promo">
 
                         </div>
@@ -80,9 +79,9 @@ class Home extends React.Component {
                         </div>
 
                     </div>
-                    <button onClick={this.getProfile}>Get User Profile</button>
+                    {/* <button onClick={this.getProfile}>Get User Profile</button>
                     <button onClick={this.logout}>Log Out</button>
-                   
+                    */}
                 </div>
             </React.Fragment>
         )

@@ -11,9 +11,6 @@ import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 
-
-// const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
-
 const formStyle = {
     padding: "40px 20px",
     height: "650px",
@@ -52,14 +49,6 @@ export default class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // firstname: '',
-            // lastname: '',
-            // gender: '',
-            // email: '',
-            // mobile_number: '',
-            // address: '',
-            // username: '',
-            // password: '',
             redirect: false,
         
         }
@@ -84,7 +73,7 @@ export default class SignUp extends React.Component {
             password: this.state.password,
             
         }).then(res => { console.log(res)})
-        // this.setState({
+        this.setState({
         //     // firstname: '',
         //     // lastname: '',
         //     // gender: 'male',
@@ -93,8 +82,8 @@ export default class SignUp extends React.Component {
         //     // address: '',
         //     // username: '',
         //     // password: '',
-        //     redirect: true
-        // })
+            redirect: true
+        })
 
     }
 

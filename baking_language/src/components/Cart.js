@@ -19,16 +19,18 @@ export default function Cart(props) {
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                {props.cartItems.map(item => (
-                    <tbody>
-                        <td key={item.id}>{item.category}</td>
-                        <td>{item.description}</td>
-                        <td>{item.quantity}</td>
-                        <td>${item.price / 100}</td>
-                        <td>${(item.price / 100) * item.quantity}</td>
-                        <button onClick={() => props.removeFromCart(item)} className="btn btn-outline-danger btn-sm"> Remove</button>
-                    </tbody>
-                ))}
+                <tbody>
+                    {props.cartItems.map(item => (
+                        <tr>
+                            <td key={item.id}>{item.category}</td>
+                            <td>{item.description}</td>
+                            <td>{item.quantity}</td>
+                            <td>${item.price / 100}</td>
+                            <td>${(item.price / 100) * item.quantity}</td>
+                            <button onClick={() => props.removeFromCart(item)} className="btn btn-outline-danger btn-sm"> Remove</button>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
             {props.cartItems.length === 0 && (
                 <h3>You have not added any item to the Cart</h3>
@@ -54,7 +56,7 @@ export default function Cart(props) {
 
                     <div className="paynow">
                         <button onClick={() => props.payNow()}
-                        className="btn btn-success">Pay Now</button>
+                            className="btn btn-success">Pay Now</button>
                     </div>
                 </div>
             )}
