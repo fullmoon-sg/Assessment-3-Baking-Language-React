@@ -95,14 +95,10 @@ export default class SignUp extends React.Component {
 
 
     render() {
-
         if (this.state.redirect) {
            alert("Sign-in successfully. Proceed to log in now.")
-            
             return (<Redirect to={'/login'} />)
         }
-
-
 
         return (
             <Grid>

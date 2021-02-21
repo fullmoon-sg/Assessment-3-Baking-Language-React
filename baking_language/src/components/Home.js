@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import HomeCarousel from './HomeCarousel'
 import './css/Home.css'
-import axios from 'axios'
+
 
 class Home extends React.Component {
 

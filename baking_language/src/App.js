@@ -28,7 +28,7 @@ class App extends React.Component {
         cartItems: [],
         token: '',
         toggle: false,
-        login : false,
+        login: false,
         gst: 0,
         cartTotal: 0,
         subTotal: 0,
@@ -67,13 +67,13 @@ class App extends React.Component {
     removeToken = (token) => {
         this.setState({
             token: "",
-            login : false
+            login: false
         })
     }
 
     confirmLogin = () => {
         this.setState({
-            login : true
+            login: true
         })
     }
 
@@ -110,7 +110,6 @@ class App extends React.Component {
             gst: gst,
             cartTotal: total
         })
-
     }
 
     removeFromCart = (product) => {
@@ -127,28 +126,28 @@ class App extends React.Component {
         });
     }
 
-   payNow = async () => {
-       console.log("Test")
-   if(this.state.token === null){
-       alert("Please proceed to login");
-       return (<Redirect to={'/login'} />)
+    payNow = async () => {
+        console.log("Test")
+        if (this.state.token === null) {
+            alert("Please proceed to login");
+            return (<Redirect to={'/login'} />)
 
-   }else {
-    let cartContent = this.state.cartItems;
-    let option = {
-      headers: {
-        Authorization: "Bearer " + this.state.token
-      }
+        } else {
+            let cartContent = this.state.cartItems;
+            let option = {
+                headers: {
+                    Authorization: "Bearer " + this.state.token
+                }
+            };
+            console.log(option);
+            let response = await axios.put(
+                "api/cart",
+                { cart_content: cartContent },
+                option
+            );
+            console.log(response);
+        }
     };
-    console.log(option);
-    let response = await axios.put(
-      "api/cart",
-      { cart_content: cartContent },
-      option
-    );
-    console.log(response);
-   }};
-
 
     render() {
         const { toggle } = this.state;
@@ -163,7 +162,7 @@ class App extends React.Component {
                             <h4><Link to="/">Baking Language</Link></h4>
                         </div>
                         <nav>
-                            <ul className={toggle ? "toggle" : ""}> 
+                            <ul className={toggle ? "toggle" : ""}>
                                 <li><Link to="/">Home</Link></li>
                                 {/* <li><Link to="/gallery">Gallery</Link></li> */}
                                 {this.state.login === true && (
@@ -172,14 +171,14 @@ class App extends React.Component {
                                 <li><Link to="/products">Products</Link></li>
                                 <li><Link to="/feedbacks">Feedbacks</Link></li>
                                 <li><Link to="/aboutUs">About Us</Link></li>
-                                  {this.state.login === true && (
+                                {this.state.login === true && (
                                     <li><Link to="/profile">My Profile</Link></li>
                                 )}
-                               {this.state.login === false && (
-                                   <li><Link to="/login">Login</Link></li>
+                                {this.state.login === false && (
+                                    <li><Link to="/login">Login</Link></li>
                                 )}
                                 {this.state.login === true && (
-                                   <li><Link to="/login" onClick={this.logout}>Logout</Link></li>
+                                    <li><Link to="/login" onClick={this.logout}>Logout</Link></li>
                                 )}
                                 <li className="close" onClick={this.menuToggle}>
                                     <CloseIcon fontSize="large" />
@@ -200,7 +199,7 @@ class App extends React.Component {
                                 removeToken={this.removeToken} />
                         </Route>
                         <Route exact path="/receipt">
-                            <Receipt/>
+                            <Receipt />
                         </Route>
                         <Route exact path="/products">
                             <ProductContext.Provider value={this.state}>
@@ -216,12 +215,12 @@ class App extends React.Component {
                             <AboutUs />
                         </Route>
                         <Route exact path="/profile">
-                            <MyProfile token={this.state.token}/>
+                            <MyProfile token={this.state.token} />
                         </Route>
                         <Route exact path="/login">
-                            <Login 
-                            setToken={this.setToken}
-                            confirmLogin={this.confirmLogin}
+                            <Login
+                                setToken={this.setToken}
+                                confirmLogin={this.confirmLogin}
                             />
                         </Route>
                         <Route exact path="/login/signup">

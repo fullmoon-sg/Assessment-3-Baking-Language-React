@@ -3,7 +3,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Cart.css'
 
-
 export default function Cart(props) {
 
     return (
