@@ -83,6 +83,9 @@ class App extends React.Component {
         this.setState({
             token: "",
             login: false,
+            gst: 0,
+            cartTotal: 0,
+            subTotal: 0,
             redirect: true
         })
     }

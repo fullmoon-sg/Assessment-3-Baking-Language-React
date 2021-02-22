@@ -1,58 +1,25 @@
-.grid-container{
-    display: flex;
-   
-}
 
-.promo{
-    display: flex;
-    height: 300px;
-    width : 480px;
-    position : relative;  
-    border: 5px solid grey;
-    background: white;
-   
+.popularWeek {
+    position: relative;
+  padding:20px 30px;
+  background: rgb(228, 228, 228);
+  font-size:35px;
+  font-family:monospace;
+  border-radius:15px;
+  text-align : center;
 }
-
-.promo-text{
-    text-align: center;
-    font-weight: bold;
-}
-
-.promo-image{
-    position: relative; 
-   width: 100%
-}
-
-.promo-h4 { 
-   position: absolute; 
-   top: 170px; 
-   left: 0; 
-   width: 100%; 
-}
-
-.promo-h4 span { 
-   color: white; 
-   font: bold 24px/36px Roboto, Sans-Serif; 
-   letter-spacing: -1px;  
-   background: lightslategray;
-   padding: 2px; 
-}
-
 
 @media (max-width: 877px){
 
-.promo{
-
-    height: 200px;
-    width : 150px;
-    border: 2px green solid;
-    position : relative;
+.popularWeek {
+    position: relative;
+    top: 10px;
+  padding:20px 30px;
+  background: rgb(228, 228, 228);
+  font-size:35px;
+  font-family:roboto;
+  border-radius:15px;
+  text-align : center;
 }
-
-.promo-image{
-    height: 100%;
-    width: auto;
-}
-
 
 }

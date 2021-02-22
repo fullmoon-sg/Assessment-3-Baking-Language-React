@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom'
-import HomeCarousel from './HomeCarousel'
+import HomeCarousel from './Home/HomeCarousel'
+import HomeCardDeck from './Home/HomeCardDeck'
 import './css/Home.css'
 
 
@@ -66,20 +67,18 @@ class Home extends React.Component {
             <React.Fragment>
                 <div>
                     <HomeCarousel />
-                    <div className="grid-container">
-                        <div className="promo">
-                            <img className="promo-image" src="https://res.cloudinary.com/fullmoon/image/upload/v1613488203/Thai_milk_tea_cake_jbmuvy.jpg" alt="Promo Pic" height="290" width="460" />
-                            <h4 className="promo-h4"><span>Thai Milk Sponge Cake Receipt : <br />
-                      Login to view the receipt</span></h4>
-                        </div>
-                        <div className="promo">
-
-                        </div>
-                        <div className="promo">
-
-                        </div>
-
-                    </div>
+                    <br/>
+                    <div className="popularWeek">   
+                    <h2>Most Popular Cakes Ordered of the Week</h2>
+                      </div>
+                      <br/>
+                    <HomeCardDeck />
+                    <br></br>
+                     <div className="popularWeek">
+                    <h2>Log in for Free Thai Milk Tea Receipt and Step-by-Step Instructions</h2>
+                      </div>
+                      <br/>
+                
                     {/* <button onClick={this.getProfile}>Get User Profile</button> */}
                     {/* <button onClick={this.logout}>Log Out</button> */}
                    

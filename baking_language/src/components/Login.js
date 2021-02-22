@@ -86,15 +86,6 @@ export default class Login extends React.Component {
                     </Grid>
                     <TextField label="Email" name="username" value={this.state.username} variant="standard" placeholder="Enter Email" fullWidth required onChange={this.updateFormField} />
                     <TextField label="Password" name="password" value={this.state.password} variant="standard" type="password" placeholder="Enter username" fullWidth required onChange={this.updateFormField} />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                name="checkedBox"
-                                color="primary"
-                            />
-                        }
-                        label="Remember Me"
-                    />
                     <Button type="submit" color="primary" variant="contained" style={buttonStyle} fullWidth onClick={this.signIn}>SIGN IN</Button>
                     <Typography>
                         <Link href="#">

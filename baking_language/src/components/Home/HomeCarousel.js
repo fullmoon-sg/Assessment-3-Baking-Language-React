@@ -1,10 +1,11 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import './css/HomeCarousel.css'
+import '../css/HomeCarousel.css'
 
 function HomeCarousel() {
     return (
         <div>
+            <br/>
             <Carousel>
                 <Carousel.Item interval={7000}>
                     <img
@@ -19,14 +20,6 @@ function HomeCarousel() {
                         className="d-block w-100"
                         width={900} height={600} 
                         src="https://res.cloudinary.com/fullmoon/image/upload/v1613535972/carousell/Sanrio_11_bhtix8.jpg"
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item interval={7000}>
-                    <img
-                        className="d-block w-100"
-                        width={900} height={600} 
-                        src="https://res.cloudinary.com/fullmoon/image/upload/v1612538888/carousell/Beehive4_mmeqhg.jpg"
                         alt="Third slide"
                     />
                 </Carousel.Item>

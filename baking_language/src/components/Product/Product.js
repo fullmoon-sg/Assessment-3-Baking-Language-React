@@ -64,7 +64,6 @@ export default function Product(props) {
                 price : price,
             })
         }}>Buy Now</Button>
-         <Button size="small">Offer</Button>
       </CardActions>
     </Card>
   );
