@@ -131,24 +131,25 @@ class App extends React.Component {
 
     payNow = async () => {
         console.log("Test")
-        if (this.state.token === null) {
-            alert("Please proceed to login");
-            return (<Redirect to={'/login'} />)
-
-        } else {
+        if (this.state.login === false) {
+            alert("Please proceed to login first. Thank you.");
+            return <Redirect to={'/login'} />
+        }
+        
+        if (this.state.login === true){
             let cartContent = this.state.cartItems;
             let option = {
                 headers: {
                     Authorization: "Bearer " + this.state.token
                 }
             };
-            console.log(option);
-            let response = await axios.put(
+            await axios.put(
                 "api/cart",
                 { cart_content: cartContent },
                 option
             );
-            console.log(response);
+            let escapedToken = encodeURIComponent(this.state.token);
+            window.open("https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/" + "api/loginWithToken?token=" + escapedToken);
         }
     };
 

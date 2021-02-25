@@ -11,8 +11,8 @@ export default function HomeCardDeck() {
     <Card.Body>
       <Card.Title>Elsa, Let it Snow</Card.Title>
       <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This content is a little bit longer.
+        This is a Lychee Martini Cake but sans the alcohol and substituted with the lychee syrup. 
+        It was baked with 3 8-inch cakes to achieve the height for the doll and also applied to do different colours for the layers. 
       </Card.Text>
     </Card.Body>
   </Card>

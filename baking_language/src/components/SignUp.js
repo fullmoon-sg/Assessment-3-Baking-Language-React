@@ -74,14 +74,6 @@ export default class SignUp extends React.Component {
             
         }).then(res => { console.log(res)})
         this.setState({
-        //     // firstname: '',
-        //     // lastname: '',
-        //     // gender: 'male',
-        //     // email: '',
-        //     // mobile_number: '',
-        //     // address: '',
-        //     // username: '',
-        //     // password: '',
             redirect: true
         })
 

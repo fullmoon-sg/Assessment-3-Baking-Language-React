@@ -1,17 +1,10 @@
 import React from 'react'
 import { Grid, Paper, TextField, Typography, Link } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock';
-// import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-// import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom'
-
-
-// const base_url = "https://8080-de3f3226-69d2-47aa-8bc2-2faf1e0a30b5.ws-us03.gitpod.io/";
 
 const formStyle = {
     padding: 20,
@@ -59,23 +52,20 @@ export default class Login extends React.Component {
                 });
                 this.props.confirmLogin()
             })
-        } else {
-            alert("Login Error")
+        } 
+        ;
+        if(!this.state.username || !this.state.password){
+            alert("Login Error, please try again.")
         }
 
     }
 
-
     render() {
 
         if (this.state.redirect) {
-            alert("Successfully Sign-In")
+            alert ("Successfully Sign-In")
             return (<Redirect to={'/'} />)
         }
-
-        //  if(sessionStorage.getItem("userData")){
-        //        return(<Redirect to={'/'}/>)
-        //    }
 
         return (
             <Grid item xs={12}>
